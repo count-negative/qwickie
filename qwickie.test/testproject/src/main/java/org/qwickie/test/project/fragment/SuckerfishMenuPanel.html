@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:wicket="http://wicket.sourceforge.net/" xml:lang="en" lang="en">
+<wicket:head>
+<script language="JavaScript" type="text/javascript">
+myHover = function() {
+        var sfEls = document.getElementById("nav").getElementsByTagName("LI");
+        for (var i=0; i<sfEls.length; i++) {
+                sfEls[i].onmouseover=function() {
+                        this.className+=" myhover";
+                }
+                sfEls[i].onmouseout=function() {
+                        this.className=this.className.replace(new RegExp(" myhover\\b"), "");
+                }
+        }
+}
+if (window.attachEvent) window.attachEvent("onload", myHover);
+</script>
+</wicket:head>
+
+  <body>
+    <wicket:panel>
+        <ul id="nav">
+          <li wicket:id="topmenuitems">
+                <span wicket:id="menuitemfragment">link</span>
+          </li>
+        </ul>
+    </wicket:panel>
+  </body>
+  
+  <wicket:fragment wicket:id="MENUITEMFRAGMENT">
+    <span wicket:id="linkfragment">link</span>
+    <ul wicket:id="menuitemlist">
+          <li wicket:id="menuitemlinks">
+                  <span wicket:id="menuitemfragment">link</span>
+          </li>
+    </ul>
+  </wicket:fragment>
+
+  <wicket:fragment wicket:id="LINKFRAGMENT">
+    <a href="#" wicket:id="linkid" class="childmenu"><span wicket:id="linktext" class="childmenutext">Link Text</span></a>
+  </wicket:fragment>
+
+  <wicket:fragment wicket:id="TEXTFRAGMENT">
+    <span wicket:id="linktext" class="childmenutext">Link Text</span>
+  </wicket:fragment>
+  
+</html>
