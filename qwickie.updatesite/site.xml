@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="QWickie" url="http://qwickie.googlecode.com/svn/trunk/qwickie.updatesite">
+      QWickie is a plugin for the webframework Wicket at apache.org
+   </description>
+   <feature url="features/qwickie.feature_0.6.0.201103131012.jar" id="qwickie.feature" version="0.6.0.201103131012">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.5.3.201103090802.jar" id="qwickie.feature" version="0.5.3.201103090802">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.5.2.201103011809.jar" id="qwickie.feature" version="0.5.2.201103011809">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.5.1.201102171817.jar" id="qwickie.feature" version="0.5.1.201102171817">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.5.0.201102121056.jar" id="qwickie.feature" version="0.5.0.201102121056">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.0.5.201101231751.jar" id="qwickie.feature" version="0.0.5.201101231751">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.0.4.201012111610.jar" id="qwickie.feature" version="0.0.4.201012111610">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.0.3.201011201120.jar" id="qwickie.feature" version="0.0.3.201011201120">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.0.2.201006081625.jar" id="qwickie.feature" version="0.0.2.201006081625">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.7.0.201103261223.jar" id="qwickie.feature" version="0.7.0.201103261223">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.8.0.201104281941.jar" id="qwickie.feature" version="0.8.0.201104281941">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.8.1.201105061855.jar" id="qwickie.feature" version="0.8.1.201105061855">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.8.2.201105191946.jar" id="qwickie.feature" version="0.8.2.201105191946">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.8.3.201106041045.jar" id="qwickie.feature" version="0.8.3.201106041045">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.8.4.201108011332.jar" id="qwickie.feature" version="0.8.4.201108011332">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.8.5.201108241817.jar" id="qwickie.feature" version="0.8.5.201108241817">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.0.201109091830.jar" id="qwickie.feature" version="0.9.0.201109091830">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.1.201110081103.jar" id="qwickie.feature" version="0.9.1.201110081103">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.2.201111121243.jar" id="qwickie.feature" version="0.9.2.201111121243">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.3.201111160932.jar" id="qwickie.feature" version="0.9.3.201111160932">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.4.201201210936.jar" id="qwickie.feature" version="0.9.4.201201210936">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.5.201202041450.jar" id="qwickie.feature" version="0.9.5.201202041450">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.6.201202181041.jar" id="qwickie.feature" version="0.9.6.201202181041">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.7.201204081024.jar" id="qwickie.feature" version="0.9.7.201204081024">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.8.201204211814.jar" id="qwickie.feature" version="0.9.8.201204211814">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_0.9.9.201207201555.jar" id="qwickie.feature" version="0.9.9.201207201555">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.0.0.201207281900.jar" id="qwickie.feature" version="1.0.0.201207281900">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.0.1.201211031418.jar" id="qwickie.feature" version="1.0.1.201211031418">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.0.2.201211080758.jar" id="qwickie.feature" version="1.0.2.201211080758">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.0.3.201301091825.jar" id="qwickie.feature" version="1.0.3.201301091825">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.0.4.201303021811.jar" id="qwickie.feature" version="1.0.4.201303021811">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.1.0.201304131449.jar" id="qwickie.feature" version="1.1.0.201304131449">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.1.1.201304171800.jar" id="qwickie.feature" version="1.1.1.201304171800">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.1.2.201305261019.jar" id="qwickie.feature" version="1.1.2.201305261019">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.1.3.201310041541.jar" id="qwickie.feature" version="1.1.3.201310041541">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.1.5.201405121750.jar" id="qwickie.feature" version="1.1.5.201405121750">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.1.6.201406062002.jar" id="qwickie.feature" version="1.1.6.201406062002">
+      <category name="QWickie Backup"/>
+   </feature>
+   <category-def name="QWickie" label="QWickie">
+      <description name="QWickie" url="http://qwickie.googlecode.com/svn/trunk/qwickie.updatesite">
+         QWickie is a plugin for the webframework Wicket at apache.org 
+         - added ResourceModel for properties navigation
+      </description>
+   </category-def>
+   <category-def name="QWickie Backup" label="QWickie Backup">
+      <description>
+         Old versions of QWickie
+      </description>
+   </category-def>
+</site>
