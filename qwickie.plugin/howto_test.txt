@@ -1,0 +1,4 @@
+checkout qwickie.test into workspace
+import the launch configs
+run "Eclipse", then import the test project and configure your test workspace
+run "AllTests"

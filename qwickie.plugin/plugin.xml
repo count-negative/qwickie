@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension point="org.eclipse.jdt.ui.javaEditorTextHovers">
+		<hover
+			class="qwickie.hover.QWickieHover"
+			id="qwickie.QWickieHover"
+			label="QWickie Hover"/>
+	</extension>
+	<extension point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
+		<hyperlinkDetector
+			class="qwickie.hyperlink.QWickieJavaHyperlinkDetector"
+			id="qwickie.QWickieJavaHyperlinkDetector"
+			name="QWickie Java Hyperlinker"
+			targetId="org.eclipse.jdt.ui.javaCode">
+		</hyperlinkDetector>
+	</extension>
+	<extension point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
+		<hyperlinkDetector
+			class="qwickie.hyperlink.QWickieHtmlHyperlinkDetector"
+			id="qwickie.QWickieHtmlHyperlinkDetector"
+			name="QWickie Html Hyperlinker"
+			targetId="org.eclipse.core.runtime.xml">
+		</hyperlinkDetector>
+	</extension>
+	<extension point="org.eclipse.ltk.core.refactoring.renameParticipants">
+		<renameParticipant
+			id="qwickie.QWickieFieldRenameParticipant"
+			name="QWickieFieldRenameParticipant" 
+			class="qwickie.refactoring.QWickieFieldRenameParticipant">
+			<enablement>
+				<with variable="affectedNatures">
+					<iterate operator="or">
+						<equals value="org.eclipse.jdt.core.javanature"/>
+					</iterate>
+				</with>
+				<with variable="element">
+					<instanceof value="org.eclipse.jdt.core.IField"/>
+				</with>
+			</enablement>
+		</renameParticipant>
+	</extension>
+	<extension point="org.eclipse.ltk.core.refactoring.renameParticipants">
+		<renameParticipant
+			id="qwickie.QWickieTypeRenameParticipant"
+			name="QWickieTypeRenameParticipant" 
+			class="qwickie.refactoring.QWickieTypeRenameParticipant">
+			<enablement>
+				<with variable="affectedNatures">
+					<iterate operator="or">
+						<equals value="org.eclipse.jdt.core.javanature"/>
+					</iterate>
+				</with>
+				<with variable="element">
+					<instanceof value="org.eclipse.jdt.core.IType"/>
+				</with>
+			</enablement>
+		</renameParticipant>
+	</extension>
+	<extension point="org.eclipse.ltk.core.refactoring.renameParticipants">
+		<renameParticipant
+			id="qwickie.QWickieHtmlRenameParticipant"
+			name="QWickieHtmlRenameParticipant" 
+			class="qwickie.refactoring.QWickieHtmlRenameParticipant">
+			<enablement>
+				<with variable="affectedNatures">
+					<iterate operator="or">
+						<equals value="org.eclipse.jdt.core.javanature"/>
+					</iterate>
+				</with>
+			</enablement>
+		</renameParticipant>
+	</extension>
+	<extension
+			id="qwickie.qwickieBuilder"
+			name="QWickie Builder"
+			point="org.eclipse.core.resources.builders">
+		<builder hasNature="true">
+			<run class="qwickie.builder.QWickieBuilder" />
+		</builder>
+	</extension>
+	<extension
+			id="qwickie.qwickieNature"
+			name="QWickie Project Nature"
+			point="org.eclipse.core.resources.natures">
+		<runtime>
+			<run class="qwickie.builder.QWickieNature" />
+		</runtime>
+		<builder id="qwickie.qwickieBuilder" />
+	</extension>
+	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution
+				adaptable="true"
+				id="qwickie.qwickieContribution"
+				nameFilter="*"
+				objectClass="org.eclipse.core.resources.IProject">
+			<action
+					class="qwickie.builder.QWickieToggleNatureAction"
+					enablesFor="+"
+					id="qwickie.addRemoveNatureAction"
+					icon="qwickie.png"
+					label="Add QWickie Nature"
+					menubarPath="org.eclipse.ui.projectConfigure/additions">
+				<visibility>
+					<and>
+						<objectState name="open" value="true"/>
+						<objectState name="nature" value="org.eclipse.wst.common.project.facet.core.nature"/>
+					</and>
+				</visibility>
+			</action>
+		</objectContribution>
+	</extension>
+	<extension
+			id="qwickie.qwickieProblem"
+			name="Wicket Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.core.resources.problemmarker" />
+		<persistent value="true" />
+	</extension>
+	<extension point="org.eclipse.jdt.ui.javaCompletionProposalComputer"
+			id="QWickieCompletionProposalComputer"
+			name="QWickie">
+		<proposalCategory icon="$nl$/qwickie.png"/>
+	</extension>
+	<extension point="org.eclipse.jdt.ui.javaCompletionProposalComputer"
+			id="QWickieCompletionProposalComputer"
+			name="QWickie">
+		<javaCompletionProposalComputer
+			class="qwickie.proposal.QWickieProposalComputer"
+			categoryId="qwickie.plugin.QWickieCompletionProposalComputer">
+			<partition type="__java_string"/>
+		</javaCompletionProposalComputer>
+	</extension>
+	<extension point="org.eclipse.wst.sse.ui.completionProposal">
+		<proposalCategory
+				icon="qwickie.png"
+				id="org.eclipse.wst.html.ui.proposalCategory.wicket"
+				name="QWickie">
+		</proposalCategory>
+		<proposalComputer
+				activate="true"
+				categoryId="org.eclipse.wst.html.ui.proposalCategory.wicket"
+				class="qwickie.proposal.QWickieHtmlProposalComputer"
+				id="qwickie.proposal.QWickieHtmlProposalComputer">
+			<contentType
+					id="org.eclipse.wst.html.core.htmlsource">
+					<partitionType id="org.eclipse.wst.html.HTML_DEFAULT"></partitionType>
+			</contentType>
+		</proposalComputer>
+	</extension>
+	<extension point="org.eclipse.ui.editors.templates">
+		<template
+				autoinsert="true"
+				contextTypeId="html_attribute"
+				description="insert wicket:id"
+				id="qwickie.wicket.idAttr"
+				name="wicket:id">
+			<pattern>wicket:id="${cursor}"</pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_attribute"
+				description="replace this with a string that is retrieved from a resource bundle"
+				id="qwickie.wicket.messageAttr"
+				name="wicket:message">
+			<pattern>wicket:message="value:${cursor}"</pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="wicket autolink functionality"
+				id="qwickie.wicket.linkTag"
+				name="wicket:link">
+			<pattern>&lt;wicket:link>${cursor}&lt;/wicket:link></pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="the wicket:panel tag surrounds a component"
+				id="qwickie.wicket.panelTag"
+				name="wicket:panel">
+			<pattern>&lt;wicket:panel>${cursor}&lt;/wicket:panel></pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="replace this with a string that is retrieved from a resource bundle"
+				id="qwickie.wicket.messageTag"
+				name="wicket:message">
+			<pattern>&lt;wicket:message key="${cursor}">Please insert text here&lt;/wicket:message></pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="replace this content with the markup of the derived component"
+				id="qwickie.wicket.childTag"
+				name="wicket:child">
+			<pattern>&lt;wicket:child /></pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="insert wicket:border"
+				id="qwickie.wicket.borderTag"
+				name="wicket:border">
+			<pattern>&lt;wicket:border>${cursor}&lt;wicket:body />&lt;/wicket:border></pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="insert wicket:body"
+				id="qwickie.wicket.bodyTag"
+				name="wicket:body">
+			<pattern>&lt;wicket:body/>${cursor}</pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="element without markup"
+				id="qwickie.wicket.containerTag"
+				name="wicket:container">
+			<pattern>&lt;wicket:container wicket:id="${cursor}">&lt;/wicket:container></pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="filters markup that surrounds a component but has its visibility dependent on the visibility of that component"
+				id="qwickie.wicket.enclosureTag"
+				name="wicket:enclosure">
+			<pattern>&lt;wicket:enclosure child="">${cursor}&lt;/wicket:enclosure></pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="extend the markup of the superclass with this content"
+				id="qwickie.wicket.extendTag"
+				name="wicket:extend">
+			<pattern>&lt;wicket:extend>${cursor}&lt;/wicket:extend></pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="used for header contributions"
+				id="qwickie.wicket.headTag"
+				name="wicket:head">
+			<pattern>&lt;wicket:head>${cursor}&lt;/wicket:head></pattern>
+		</template>
+		<template
+				autoinsert="true"
+				contextTypeId="html_tag"
+				description="remove this content in the final markup"
+				id="qwickie.wicket.removeTag"
+				name="wicket:remove">
+			<pattern>&lt;wicket:remove>${cursor}&lt;/wicket:remove></pattern>
+		</template>
+	</extension>
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="qwickie" name="QWickie"></category>
+		<wizard
+			category="qwickie"
+			class="qwickie.wizard.QWickieNewWebPageWizard"
+			icon="qwickie.png"
+			id="qwickie.wizard.QWickieNewWebPageWizard"
+			name="Wicket WebPage">
+			<description>Creates a new Wicket WebPage</description>
+		</wizard>
+		<wizard
+			category="qwickie"
+			class="qwickie.wizard.QWickieNewPanelWizard"
+			icon="qwickie.png"
+			id="qwickie.wizard.QWickieNewPanelWizard"
+			name="Wicket Panel">
+			<description>Creates a new Wicket Panel</description>
+		</wizard>
+	</extension>
+	<extension point="org.eclipse.wst.xml.core.catalogContributions">
+		<catalogContribution id="default">
+				<uri name="http://wicket.apache.org" uri="wicket-1.5.xsd" />
+				<uri name="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" uri="wicket-xhtml1-strict.dtd" />
+		</catalogContribution>
+	</extension>
+	<extension point="org.eclipse.jdt.ui.quickFixProcessors">
+		<quickFixProcessor
+			class="qwickie.quickfix.QWickieQuickFixProcessor"
+			id="qwickie.quickfix.QWickieQuickFixProcessor">
+			<handledMarkerTypes>
+				<markerType id="qwickie.qwickieProblem"/>
+			</handledMarkerTypes>
+			<enablement>
+				<with variable="projectNatures">
+					<iterate operator="or">
+						<equals value="qwickie.qwickieNature"/>
+					</iterate>
+				</with>
+			</enablement>
+		</quickFixProcessor>
+	</extension>
+	<!--
+	<extension point="org.eclipse.ui.propertyPages">
+		<page id="qwickie.ProjectPreferencePage"
+			class="qwickie.preferences.QWickieProjectPreferencePage"
+			name="QWickie">
+		<filter name="nature" value="qwickie.qwickieNature"/>
+		<enabledWhen>
+			<adapt type="org.eclipse.core.resources.IProject"></adapt>
+		</enabledWhen>
+		</page>
+	</extension>
+	-->
+	<extension point="org.eclipse.ui.preferencePages">
+      <page
+            class="qwickie.preferences.QWickiePreferencePage"
+            id="qwickie.preferences.QWickiePreferencePage"
+            category="org.eclipse.wst.html.ui.preferences.web"
+            name="QWickie">
+      </page>
+  </extension>
+	<!-- remove for eclipse 4.2 because of error message
+	Conflicting handlers for qwickie.command: {qwickie.handler.QWickieHandler} vs {qwickie.handler.QWickieHandler}
+	<extension point="org.eclipse.ui.handlers">
+		<handler commandId="qwickie.command" class="qwickie.handler.QWickieHandler" /> 
+	</extension>
+	-->
+	<extension point="org.eclipse.ui.commands">
+		<category id="qwickie.commands.category" name="QWickie" />
+		<command
+			defaultHandler="qwickie.handler.QWickieHandler"
+			categoryId="qwickie.commands.category"
+			description="QWickie Command"
+			id="qwickie.command"
+			name="QWickie Command">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.bindings">
+	<!--
+		<sequenceModifier
+			find="M1+M2"
+			replace="M2+M3"
+			platforms="cocoa,carbon" />
+	-->
+		<key
+			sequence="M1+M2+1"
+			commandId="qwickie.command"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			contextId="org.eclipse.wst.html.core.htmlsource" />
+		<key
+			sequence="M1+M2+2"
+			commandId="qwickie.command"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			contextId="org.eclipse.jdt.ui.javaEditorScope" />
+	</extension>
+	<extension point="org.eclipse.ui.startup"></extension>
+</plugin>
