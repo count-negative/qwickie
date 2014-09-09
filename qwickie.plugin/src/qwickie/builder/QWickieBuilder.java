@@ -75,7 +75,7 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 	class QWickieDeltaVisitor implements IResourceDeltaVisitor {
 		/*
 		 * (non-Javadoc)
-		 * 
+		 *
 		 * @see org.eclipse.core.resources.IResourceDeltaVisitor#visit(org.eclipse.core.resources.IResourceDelta)
 		 */
 		public boolean visit(final IResourceDelta delta) throws CoreException {
@@ -85,17 +85,17 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 			}
 
 			switch (delta.getKind()) {
-				case IResourceDelta.ADDED:
-					// handle added resource
-					checkWicketIds(resource);
-					break;
-				case IResourceDelta.REMOVED:
-					// handle removed resource
-					break;
-				case IResourceDelta.CHANGED:
-					// handle changed resource
-					checkWicketIds(resource);
-					break;
+			case IResourceDelta.ADDED:
+				// handle added resource
+				checkWicketIds(resource);
+				break;
+			case IResourceDelta.REMOVED:
+				// handle removed resource
+				break;
+			case IResourceDelta.CHANGED:
+				// handle changed resource
+				checkWicketIds(resource);
+				break;
 			}
 			// return true to continue visiting children.
 			return true;
@@ -110,7 +110,8 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
-	private void addMarker(final IFile file, final String message, final String wid, final String htmlSnippet, int lineNumber, final int startChar, final int length) {
+	private void addMarker(final IFile file, final String message, final String wid, final String htmlSnippet, int lineNumber, final int startChar,
+			final int length) {
 		try {
 			final IMarker marker = file.createMarker(MARKER_TYPE);
 			marker.setAttribute(MARKER_ATTRIB_WICKET_ID, wid);
@@ -131,7 +132,7 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.core.internal.events.InternalBuilder#build(int, java.util.Map, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
@@ -306,7 +307,8 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 			final FindReplaceDocumentAdapter frda = new FindReplaceDocumentAdapter(document);
 			final IRegion region = frda.find(0, "class " + className, true, true, true, false);
 			if (region != null) {
-				addMarker(javaFile, getErrorText(wid), wid, htmlSnippet, document.getLineOfOffset(region.getOffset()), region.getOffset() + 6, className.length());
+				addMarker(javaFile, getErrorText(wid), wid, htmlSnippet, document.getLineOfOffset(region.getOffset()), region.getOffset() + 6,
+						className.length());
 			}
 			provider.disconnect(javaFile);
 		} catch (final Exception e) {
@@ -340,7 +342,8 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 				ResolvedBinaryType rbt = (ResolvedBinaryType) je;
 				String source = rbt.getSource(); // try to get the source
 				// shorten search for know wicket:ids
-				if ((je.getElementName().equals("FilterToolbar") && ("focus-tracker".equals(wid) || "focus-restore".equals(wid))) || ("cols".equals(wid) && je.getElementName().equals("GridView"))) {
+				if ((je.getElementName().equals("FilterToolbar") && ("focus-tracker".equals(wid) || "focus-restore".equals(wid)))
+						|| ("cols".equals(wid) && je.getElementName().equals("GridView"))) {
 					return 1;
 				}
 				return getJavaLine(source, wid);
@@ -421,30 +424,29 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 	}
 
 	public void fullBuild(final IProgressMonitor monitor) throws CoreException {
-		try {
-			final String ssever = store.getString(QWickiePreferencePage.SEVERITY);
-			try {
-				severity = Integer.parseInt(ssever);
-			} catch (NumberFormatException nfe) {
-				severity = QWickiePreferencePage.SEVERITIES.valueOf(ssever).ordinal();
-			}
-			getProject().accept(new QWickieResourceVisitor());
-		} catch (final CoreException e) {
-		}
+		checkSeverity();
+		getProject().accept(new QWickieResourceVisitor());
 	}
 
 	protected void incrementalBuild(final IResourceDelta delta, final IProgressMonitor monitor) throws CoreException {
-		// the visitor does the work.
+		checkSeverity();
+		delta.accept(new QWickieDeltaVisitor());
+	}
+
+	public void checkSeverity() {
 		String ssever = store.getString(QWickiePreferencePage.SEVERITY);
 		if (ssever == null || "".equals(ssever)) {
-			ssever=store.getDefaultString(QWickiePreferencePage.SEVERITY);
+			ssever = store.getDefaultString(QWickiePreferencePage.SEVERITY);
 		}
 		try {
 			severity = Integer.parseInt(ssever);
 		} catch (NumberFormatException nfe) {
-			severity = QWickiePreferencePage.SEVERITIES.valueOf(ssever).ordinal();
+			try {
+				severity = QWickiePreferencePage.SEVERITIES.valueOf(ssever).ordinal();
+			} catch (Exception ex) {
+				ssever = store.getDefaultString(QWickiePreferencePage.SEVERITY);
+			}
 		}
-		delta.accept(new QWickieDeltaVisitor());
 	}
 
 }
