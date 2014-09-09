@@ -115,6 +115,9 @@
       <category name="QWickie Backup"/>
    </feature>
    <feature url="features/qwickie.feature_1.1.7.201408081620.jar" id="qwickie.feature" version="1.1.7.201408081620">
+      <category name="QWickie Backup"/>
+   </feature>
+   <feature url="features/qwickie.feature_1.1.8.201409091855.jar" id="qwickie.feature" version="1.1.8.201409091855">
       <category name="QWickie"/>
    </feature>
    <category-def name="QWickie" label="QWickie">
