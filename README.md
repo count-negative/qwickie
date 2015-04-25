@@ -8,7 +8,7 @@ This is an eclipse plugin for the Java Webframework Wicket from apache.org
 ```
 #!java
 
-https://bitbucket.org/count_negative/qwickie/qwickie.updatesite/
+https://bitbucket.org/count_negative/qwickie/src/master/qwickie.updatesite/
 ```
 
 Current version: **1.1.8**
