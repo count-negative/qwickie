@@ -31,7 +31,9 @@ public class TypeHelperTest {
 		long start = System.nanoTime();
 
 		final List<Object> supertypes = TypeHelper.getSupertypes(javaFile);
-		assertEquals(supertypes.size(), 19);
+		// if wicket 6 supertypes == 19, if wicket 1.5 then 20
+		boolean size = supertypes.size()==19 || supertypes.size()==20;
+		assertTrue(size);
 		final ClassFile clazz = (ClassFile) supertypes.get(0);
 		assertEquals(clazz.getElementName(), "FormComponentPanel.class");
 
