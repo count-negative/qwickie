@@ -275,8 +275,8 @@
 	</extension>
 	<extension point="org.eclipse.wst.xml.core.catalogContributions">
 		<catalogContribution id="default">
-				<uri name="http://wicket.apache.org" uri="wicket-1.5.xsd" />
-				<uri name="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" uri="wicket-xhtml1-strict.dtd" />
+				<uri name="http://wicket.apache.org" uri="xsd/wicket-1.5.xsd" />
+				<uri name="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" uri="xsd/wicket-xhtml1-strict.dtd" />
 		</catalogContribution>
 	</extension>
 	<extension point="org.eclipse.jdt.ui.quickFixProcessors">
@@ -343,11 +343,13 @@
 			commandId="qwickie.command"
 			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
 			contextId="org.eclipse.wst.html.core.htmlsource" />
-		<key
+		<key	
 			sequence="M1+M2+2"
 			commandId="qwickie.command"
 			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
 			contextId="org.eclipse.jdt.ui.javaEditorScope" />
 	</extension>
-	<extension point="org.eclipse.ui.startup"></extension>
+	<extension point="org.eclipse.ui.startup">
+		<startup class="qwickie.QWickieActivator" />
+	</extension>
 </plugin>
