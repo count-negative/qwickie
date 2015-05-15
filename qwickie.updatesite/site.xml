@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <description name="QWickie" url="http://qwickie.googlecode.com/svn/trunk/qwickie.updatesite">
-      QWickie is a plugin for the webframework Wicket at apache.org
+   <description name="qwickie" url="https://bitbucket.org/count_negative/qwickie/src/master/qwickie.updatesite/">
+      qwickie is a plugin for the webframework Wicket at apache.org
    </description>
    <feature url="features/qwickie.feature_1.1.6.201406062002.jar" id="qwickie.feature" version="1.1.6.201406062002">
-      <category name="QWickie Backup"/>
+      <category name="qwickie Backup"/>
    </feature>
    <feature url="features/qwickie.feature_1.1.7.201408081620.jar" id="qwickie.feature" version="1.1.7.201408081620">
-      <category name="QWickie Backup"/>
+      <category name="qwickie Backup"/>
    </feature>
    <feature url="features/qwickie.feature_1.1.8.201409091855.jar" id="qwickie.feature" version="1.1.8.201409091855">
-      <category name="QWickie Backup"/>
+      <category name="qwickie Backup"/>
    </feature>
    <feature url="features/qwickie.feature_1.1.9.201502101458.jar" id="qwickie.feature" version="1.1.9.201502101458">
-      <category name="QWickie Backup"/>
+      <category name="qwickie Backup"/>
    </feature>
-   <feature url="features/qwickie.feature_1.1.10.201505151854.jar" id="qwickie.feature" version="1.1.10.201505151854">
-      <category name="QWickie"/>
+   <feature url="features/qwickie.feature_1.1.10.201505151949.jar" id="qwickie.feature" version="1.1.10.201505151949">
+      <category name="qwickie"/>
    </feature>
-   <category-def name="QWickie" label="QWickie">
-      <description name="QWickie" url="http://qwickie.googlecode.com/svn/trunk/qwickie.updatesite">
-         QWickie is a plugin for the webframework Wicket at apache.org 
-         - added ResourceModel for properties navigation
+   <category-def name="qwickie" label="qwickie">
+      <description name="qwickie" url="https://bitbucket.org/count_negative/qwickie/src/master/qwickie.updatesite/">
+         qwickie is a plugin for the webframework Wicket at apache.org
       </description>
    </category-def>
-   <category-def name="QWickie Backup" label="QWickie Backup">
+   <category-def name="qwickie Backup" label="QWickie Backup">
       <description>
-         Old versions of QWickie
+         Old versions of qwickie
       </description>
    </category-def>
 </site>
