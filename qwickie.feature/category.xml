@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <category-def name="QWickie" label="QWickie">
+   <category-def name="qwickie" label="qwickie">
       <description>
-         QWickie
+         qwickie
       </description>
    </category-def>
 </site>
