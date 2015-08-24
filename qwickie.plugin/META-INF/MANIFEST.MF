@@ -1,8 +1,8 @@
-QqhManifest-Version: 1.0
+Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: QWickie
+Bundle-Name: qwickie
 Bundle-SymbolicName: qwickie.plugin;singleton:=true
-Bundle-Version: 1.1.10.qualifier
+Bundle-Version: 1.1.11.qualifier
 Bundle-Activator: qwickie.QWickieActivator
 Bundle-Vendor: count.negative
 Require-Bundle: org.eclipse.ui,
