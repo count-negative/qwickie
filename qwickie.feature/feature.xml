@@ -5,12 +5,12 @@
       version="1.1.11.qualifier"
       provider-name="count.negative">
 
-   <description url="https://bitbucket.org/count_negative/qwickie/src/master/qwickie.updatesite/">
+   <description url="http://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
       qwickie is a plugin for the webframework Wicket at apache.org
    </description>
 
    <url>
-      <update label="qwickie" url="https://bitbucket.org/count_negative/qwickie/src/master/qwickie.updatesite/"/>
+      <update label="qwickie" url="http://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml"/>
    </url>
 
    <plugin
