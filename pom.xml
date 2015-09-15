@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>qwickie</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.1.11-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>parent</name>
+    <url>https://github.com/count-negative/qwickie</url>
+
+    <modules>
+        <module>qwickie.plugin</module>
+        <module>qwickie.feature</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.tycho>0.23.0</version.tycho>
+        <java.version>1.5</java.version>
+        <repository.url.mars>http://download.eclipse.org/releases/mars</repository.url.mars>
+        <repository.url.luna>http://download.eclipse.org/releases/luna</repository.url.luna>
+        <repository.url.kepler>http://download.eclipse.org/releases/kepler</repository.url.kepler>
+        <repository.url.juno>http://download.eclipse.org/releases/juno</repository.url.juno>
+    </properties>
+
+    <!-- Put this in ~/.m2/settings, the build with "mvn -Peclipse-repo-mars clean verify"
+           see https://maven.apache.org/guides/mini/guide-multiple-repositories.html
+           or move the comment markers around below manually         -->
+    <!-- 
+    <profiles>
+        <profile>
+            <id>eclipse-repo-mars</id>
+      -->
+            <repositories>
+                <repository>
+                    <id>mars</id>
+                    <url>${repository.url.mars}</url>
+                    <layout>p2</layout>
+                </repository>
+            </repositories>
+     <!--
+        </profile>
+        <profile>
+            <id>eclipse-repo-luna</id>
+            <repositories>
+                <repository>
+                    <id>luna</id>
+                    <url>${repository.url.luna}</url>
+                    <layout>p2</layout>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>eclipse-repo-kepler</id>
+            <repositories>
+                <repository>
+                    <id>kepler</id>
+                    <url>${repository.url.kepler}</url>
+                    <layout>p2</layout>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>eclipse-repo-juno</id>
+            <repositories>
+                <repository>
+                    <id>juno</id>
+                    <url>${repository.url.juno}</url>
+                    <layout>p2</layout>
+                </repository>
+            </repositories>
+        </profile>
+    <profiles>
+     -->
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-maven-plugin</artifactId>
+                    <version>${version.tycho}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-platform-configuration</artifactId>
+                    <version>${version.tycho}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
