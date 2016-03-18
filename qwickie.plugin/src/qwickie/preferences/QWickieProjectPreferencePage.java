@@ -56,7 +56,9 @@ public class QWickieProjectPreferencePage extends PropertyPage {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.jface.preference.PreferencePage#createContents(org.eclipse.swt.widgets.Composite)
+	 * @see
+	 * org.eclipse.jface.preference.PreferencePage#createContents(org.eclipse.
+	 * swt.widgets.Composite)
 	 */
 	@Override
 	protected Control createContents(final Composite parent) {
@@ -81,7 +83,8 @@ public class QWickieProjectPreferencePage extends PropertyPage {
 		sfExcludes.setPage(this);
 		sfExcludes.load();
 
-		rgAdder = new RadioGroupFieldEditor(ADDERS_TO, "add new components to", 1, new String[][] { { "Constructor", "ctor" }, { "onInitialize", "init" } }, composite);
+		rgAdder = new RadioGroupFieldEditor(ADDERS_TO, "add new components to", 1, new String[][] { { "Constructor", "ctor" }, { "onInitialize", "init" } },
+				composite);
 		rgAdder.setPreferenceStore(getPreferenceStore());
 		rgAdder.setPage(this);
 		rgAdder.load();

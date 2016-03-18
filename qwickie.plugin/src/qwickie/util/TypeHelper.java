@@ -152,7 +152,8 @@ public final class TypeHelper {
 						final ITypeBinding[] typeArguments = ntb.getTypeArguments();
 						for (int i = 0; i < typeArguments.length; i++) {
 							ITypeBinding typeArgument = typeArguments[i];
-							if (!typeArgument.isArray() && !typeArgument.isNullType() && !typeArgument.isPrimitive() && !"java.lang.String".equals(typeArgument.getBinaryName())) {
+							if (!typeArgument.isArray() && !typeArgument.isNullType() && !typeArgument.isPrimitive()
+									&& !"java.lang.String".equals(typeArgument.getBinaryName())) {
 								list.addAll(Arrays.asList(typeArgument.getDeclaredFields()));
 								return false;
 							}
@@ -183,7 +184,8 @@ public final class TypeHelper {
 	}
 
 	/**
-	 * checks if the JavaElement extends Component and has a String (wicketId) as the first CTOR Parameter
+	 * checks if the JavaElement extends Component and has a String (wicketId)
+	 * as the first CTOR Parameter
 	 * 
 	 * @throws JavaModelException
 	 */

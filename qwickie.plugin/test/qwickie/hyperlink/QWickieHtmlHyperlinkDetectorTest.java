@@ -79,7 +79,8 @@ public class QWickieHtmlHyperlinkDetectorTest {
 		final IEditorPart activeEditor = activePage.getActiveEditor();
 		assertTrue(activeEditor.getEditorInput() instanceof FileEditorInput);
 		FileEditorInput input = (FileEditorInput) activeEditor.getEditorInput();
-		assertEquals(input.getFile().getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/issue45/mobile/RegistrationPage.java");
+		assertEquals(input.getFile().getFullPath().toPortableString(),
+				"/testproject/src/main/java/org/qwickie/test/project/issue45/mobile/RegistrationPage.java");
 		activePage.closeAllEditors(false);
 
 		System.out.println("testDetectionPackageOne:\t" + (System.nanoTime() - start));

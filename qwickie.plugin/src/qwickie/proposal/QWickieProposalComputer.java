@@ -60,8 +60,10 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.jdt.internal.ui.text.java.JavaCompletionProposalComputer#computeCompletionProposals(org.eclipse.jdt.ui.text.java.ContentAssistInvocationContext
-	 * , org.eclipse.core.runtime.IProgressMonitor)
+	 * org.eclipse.jdt.internal.ui.text.java.JavaCompletionProposalComputer#
+	 * computeCompletionProposals(org.eclipse.jdt.ui.text.java.
+	 * ContentAssistInvocationContext ,
+	 * org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public List<ICompletionProposal> computeCompletionProposals(final ContentAssistInvocationContext context, final IProgressMonitor monitor) {
 		boolean wasEmpty = proposals.isEmpty();
@@ -82,7 +84,8 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 						if (jes.length == 1 && TypeHelper.isWicketJavaElement(jes[0])) {
 
 							final IResource resource = cu.getResource();
-							final String openKind = jes[0].getElementName().equals(DocumentHelper.GET_STRING) ? WicketHyperlink.PROPERTIES : WicketHyperlink.HTML;
+							final String openKind = jes[0].getElementName().equals(DocumentHelper.GET_STRING) ? WicketHyperlink.PROPERTIES
+									: WicketHyperlink.HTML;
 							final WicketHyperlink wh = new WicketHyperlink(new Region(0, 0), "", openKind);
 							final List<String> filenamesToOpen = wh.getFilenamesToOpen(resource, openKind);
 
@@ -108,10 +111,12 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 											if (line.contains(QWickieActivator.WICKET_ID + "=\"") && !commented) {
 												String[] wids = getWicketIdsFrom(line);
 												for (String wid : wids) {
-													final String additionalInfo = line.trim().replaceAll("<", "&lt;").replaceAll("\"" + wid + "\"", "\"<b>" + wid + "</b>\"");
+													final String additionalInfo = line.trim().replaceAll("<", "&lt;").replaceAll("\"" + wid + "\"",
+															"\"<b>" + wid + "</b>\"");
 													final IRegion sar = DocumentHelper.findStringArgumentInJava(document, context.getInvocationOffset());
 
-													final CompletionProposal ccp = new CompletionProposal(wid, sar.getOffset(), sar.getLength(), 0, img, wid, null, additionalInfo);
+													final CompletionProposal ccp = new CompletionProposal(wid, sar.getOffset(), sar.getLength(), 0, img, wid,
+															null, additionalInfo);
 													proposals.put(wid, ccp);
 												}
 											}
@@ -121,13 +126,15 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 
 												final String key = line.split("=")[0];
 												final IRegion sar = DocumentHelper.findStringArgumentInJava(document, context.getInvocationOffset());
-												final CompletionProposal ccp = new CompletionProposal(key, sar.getOffset(), sar.getLength(), 0, img, key, null, line.trim().replaceAll(key, "<b>" + key + "</b>"));
+												final CompletionProposal ccp = new CompletionProposal(key, sar.getOffset(), sar.getLength(), 0, img, key, null,
+														line.trim().replaceAll(key, "<b>" + key + "</b>"));
 												proposals.put(key, ccp);
 											} else if (filename.endsWith(WicketHyperlink.XML) && line.contains("<entry key=\"")) {
 
 												final String key = line.split("<entry key=\"")[1].split("\">")[0];
 												final IRegion sar = DocumentHelper.findStringArgumentInJava(document, context.getInvocationOffset());
-												final CompletionProposal ccp = new CompletionProposal(key, sar.getOffset(), sar.getLength(), 0, img, key, null, line.trim().replaceAll("<", "&lt;").replaceAll("\"" + key + "\"", "\"<b>" + key + "</b>\""));
+												final CompletionProposal ccp = new CompletionProposal(key, sar.getOffset(), sar.getLength(), 0, img, key, null,
+														line.trim().replaceAll("<", "&lt;").replaceAll("\"" + key + "\"", "\"<b>" + key + "</b>\""));
 												proposals.put(key, ccp);
 											}
 										}
@@ -179,7 +186,8 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#sessionStarted()
+	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#
+	 * sessionStarted()
 	 */
 	public void sessionStarted() {
 		proposals = new HashMap<String, CompletionProposal>();
@@ -188,17 +196,21 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#computeContextInformation(org.eclipse.jdt.ui.text.java.ContentAssistInvocationContext,
+	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#
+	 * computeContextInformation(org.eclipse.jdt.ui.text.java.
+	 * ContentAssistInvocationContext,
 	 * org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public List<IContextInformation> computeContextInformation(final ContentAssistInvocationContext paramContentAssistInvocationContext, final IProgressMonitor paramIProgressMonitor) {
+	public List<IContextInformation> computeContextInformation(final ContentAssistInvocationContext paramContentAssistInvocationContext,
+			final IProgressMonitor paramIProgressMonitor) {
 		return null;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#getErrorMessage()
+	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#
+	 * getErrorMessage()
 	 */
 	public String getErrorMessage() {
 		return null;
@@ -207,7 +219,9 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#sessionEnded()
+	 * @see
+	 * org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#sessionEnded
+	 * ()
 	 */
 	public void sessionEnded() {
 		proposals = null;

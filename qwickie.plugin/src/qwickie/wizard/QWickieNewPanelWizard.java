@@ -32,7 +32,8 @@ import org.eclipse.wst.html.ui.internal.Logger;
 import org.eclipse.wst.html.ui.internal.wizard.NewHTMLWizard;
 
 /**
- * QWickieNewPanelWizard, creates new Wicket Panel as java class with corresponding html file
+ * QWickieNewPanelWizard, creates new Wicket Panel as java class with
+ * corresponding html file
  * 
  * @author count.negative
  * 

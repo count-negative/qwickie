@@ -59,7 +59,9 @@ public class QWickieToggleNatureAction implements IObjectActionDelegate {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
+	 * @see
+	 * org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.
+	 * IAction, org.eclipse.jface.viewers.ISelection)
 	 */
 	public void selectionChanged(final IAction action, final ISelection selection) {
 		this.selection = selection;
@@ -81,7 +83,9 @@ public class QWickieToggleNatureAction implements IObjectActionDelegate {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction, org.eclipse.ui.IWorkbenchPart)
+	 * @see
+	 * org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.
+	 * action.IAction, org.eclipse.ui.IWorkbenchPart)
 	 */
 	public void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
 	}
@@ -90,7 +94,7 @@ public class QWickieToggleNatureAction implements IObjectActionDelegate {
 	 * Toggles sample nature on a project
 	 * 
 	 * @param project
-	 *          to have sample nature added or removed
+	 *            to have sample nature added or removed
 	 */
 	private boolean toggleNature(final IProject project) {
 		try {

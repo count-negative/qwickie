@@ -220,7 +220,10 @@ public final class DocumentHelper {
 		}
 	}
 
-	/** Finds the IRegion where a wicket Component (one that extends Component) is found */
+	/**
+	 * Finds the IRegion where a wicket Component (one that extends Component)
+	 * is found
+	 */
 	public static IRegion getRegionOfWicketComponent(final IDocument document, final int offset, final IJavaElement javaElement) throws JavaModelException {
 		if (javaElement != null && javaElement instanceof NamedMember) {
 			final NamedMember method = (NamedMember) javaElement;
@@ -255,7 +258,8 @@ public final class DocumentHelper {
 	 *            the java document
 	 * @param offset
 	 *            where the search should begin
-	 * @return A region where the java component part begins (e.g. the 'F' in "new Form<Customer>("customerForm");" length is always 1
+	 * @return A region where the java component part begins (e.g. the 'F' in
+	 *         "new Form<Customer>("customerForm");" length is always 1
 	 */
 	public static IRegion findWicketComponentRegion(final IDocument document, final int offset) {
 		try {
@@ -313,14 +317,15 @@ public final class DocumentHelper {
 
 		SearchEngine searchEngine = new SearchEngine();
 		try {
-			searchEngine.search(pattern, new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() }, SearchEngine.createWorkspaceScope(),
-					requestor, new NullProgressMonitor());
+			searchEngine.search(pattern, new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() }, SearchEngine.createWorkspaceScope(), requestor,
+					new NullProgressMonitor());
 		} catch (CoreException e) {
 		}
 	}
 
 	/**
-	 * returns the String constant name in a line of java code e.g. <code>protected String PETE = "pete";</code> returns <code>PETE</code>
+	 * returns the String constant name in a line of java code e.g.
+	 * <code>protected String PETE = "pete";</code> returns <code>PETE</code>
 	 */
 	public static String getStringConstantName(final String line) {
 		Assert.isNotNull(line);

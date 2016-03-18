@@ -40,7 +40,8 @@ import qwickie.util.FileSearcher;
 import qwickie.util.TypeHelper;
 
 /**
- * If a Java file of type Component is renamed, then rename the corresponding html file too
+ * If a Java file of type Component is renamed, then rename the corresponding
+ * html file too
  * 
  * @author count.negative
  * 
@@ -53,18 +54,23 @@ public class QWickieTypeRenameParticipant extends RenameParticipant {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant# checkConditions(org.eclipse.core.runtime.IProgressMonitor,
+	 * @see
+	 * org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
+	 * checkConditions(org.eclipse.core.runtime.IProgressMonitor,
 	 * org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext)
 	 */
 	@Override
-	public RefactoringStatus checkConditions(final IProgressMonitor paramIProgressMonitor, final CheckConditionsContext paramCheckConditionsContext) throws OperationCanceledException {
+	public RefactoringStatus checkConditions(final IProgressMonitor paramIProgressMonitor, final CheckConditionsContext paramCheckConditionsContext)
+			throws OperationCanceledException {
 		return new RefactoringStatus();
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant# createChange(org.eclipse.core.runtime.IProgressMonitor)
+	 * @see
+	 * org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
+	 * createChange(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
 	public Change createChange(final IProgressMonitor paramIProgressMonitor) throws CoreException, OperationCanceledException {
@@ -100,9 +106,11 @@ public class QWickieTypeRenameParticipant extends RenameParticipant {
 					if (ff != null && ff.exists() && ff.isAccessible() && FileSearcher.haveSameRelativePathToParentSourceFolder(ff, oldFile)) {
 						IPath nfn = ff.getFullPath().removeLastSegments(1).append(getArguments().getNewName());
 						if (ff.getName().startsWith(sourceType.getTypeQualifiedName() + "_")) { // variation
-							nfn = ff.getFullPath().removeLastSegments(1).append(getArguments().getNewName() + ff.getName().substring(ff.getName().indexOf("_")));
+							nfn = ff.getFullPath().removeLastSegments(1)
+									.append(getArguments().getNewName() + ff.getName().substring(ff.getName().indexOf("_")));
 						} else if (ff.getName().startsWith(sourceType.getTypeQualifiedName() + "$")) { // inner type
-							nfn = ff.getFullPath().removeLastSegments(1).append(getArguments().getNewName() + ff.getName().substring(ff.getName().indexOf("$")));
+							nfn = ff.getFullPath().removeLastSegments(1)
+									.append(getArguments().getNewName() + ff.getName().substring(ff.getName().indexOf("$")));
 						} else {
 							nfn = nfn.addFileExtension("html");
 						}
@@ -119,7 +127,8 @@ public class QWickieTypeRenameParticipant extends RenameParticipant {
 					if (ff != null && ff.exists() && ff.isAccessible() && FileSearcher.haveSameRelativePathToParentSourceFolder(ff, oldFile)) {
 						IPath nfn = ff.getFullPath().removeLastSegments(1).append(getArguments().getNewName());
 						if (ff.getName().startsWith(sourceType.getTypeQualifiedName() + "_")) { // variation
-							nfn = ff.getFullPath().removeLastSegments(1).append(getArguments().getNewName() + ff.getName().substring(ff.getName().indexOf("_")));
+							nfn = ff.getFullPath().removeLastSegments(1)
+									.append(getArguments().getNewName() + ff.getName().substring(ff.getName().indexOf("_")));
 						} else if (ff.getName().startsWith(sourceType.getTypeQualifiedName() + "$")) { // inner type
 
 						} else {
@@ -147,7 +156,9 @@ public class QWickieTypeRenameParticipant extends RenameParticipant {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant# getName()
+	 * @see
+	 * org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
+	 * getName()
 	 */
 	@Override
 	public String getName() {
@@ -157,7 +168,9 @@ public class QWickieTypeRenameParticipant extends RenameParticipant {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant# initialize(java.lang.Object)
+	 * @see
+	 * org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
+	 * initialize(java.lang.Object)
 	 */
 	@Override
 	protected boolean initialize(final Object paramObject) {

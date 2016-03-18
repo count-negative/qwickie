@@ -45,7 +45,8 @@ public class QWickiePartListener implements IPartListener {
 				try {
 					final IFile file = WicketHyperlink.getFile(fileName);
 					if (file != null && file.exists()) {
-						if ((QWickieActivator.getDefault().openHTMLFiles() && WicketHyperlink.HTML.equals(file.getFileExtension())) || (QWickieActivator.getDefault().openPropertiesFiles() && WicketHyperlink.PROPERTIES.equals(file.getFileExtension()))) {
+						if ((QWickieActivator.getDefault().openHTMLFiles() && WicketHyperlink.HTML.equals(file.getFileExtension()))
+								|| (QWickieActivator.getDefault().openPropertiesFiles() && WicketHyperlink.PROPERTIES.equals(file.getFileExtension()))) {
 							IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), file);
 						}
 					}

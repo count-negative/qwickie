@@ -99,8 +99,7 @@ public class QWickieQuickFixProposal implements IJavaCompletionProposal {
 		final String ctorSuper = "super\\(";
 		IRegion superRegion = frda.find(initMethodRegion.getOffset(), getMethodName().startsWith("constructor") ? ctorSuper : onInitSuper, true, true, false,
 				true);
-		frda.find(superRegion != null ? superRegion.getOffset() : initMethodRegion.getOffset(), superRegion != null ? ";" : "{", true, true, false,
-				false);
+		frda.find(superRegion != null ? superRegion.getOffset() : initMethodRegion.getOffset(), superRegion != null ? ";" : "{", true, true, false, false);
 		return superRegion;
 	}
 
@@ -114,7 +113,8 @@ public class QWickieQuickFixProposal implements IJavaCompletionProposal {
 
 	private IRegion findCTOR(final FindReplaceDocumentAdapter frda) throws BadLocationException {
 		IRegion initMethodRegion = frda.find(0, marker.getResource().getFullPath().removeFileExtension().lastSegment(), true, true, true, false);
-		initMethodRegion = frda.find(initMethodRegion.getOffset() + 1, marker.getResource().getFullPath().removeFileExtension().lastSegment(), true, true, true, false);
+		initMethodRegion = frda.find(initMethodRegion.getOffset() + 1, marker.getResource().getFullPath().removeFileExtension().lastSegment(), true, true, true,
+				false);
 		if (initMethodRegion == null) { // there is no CTOR
 			MessageDialog.openWarning(null, "constructor missing", "no method constructor found. Please create one first.");
 		}
@@ -130,8 +130,8 @@ public class QWickieQuickFixProposal implements IJavaCompletionProposal {
 		if (template == null) {
 			return null;
 		}
-		return (marker == null ? "add all the missing wicket components to the " + getMethodName() : "adds a <b>new " + template + "(\""
-				+ wicketId + "\");</b> to the " + getMethodName());
+		return (marker == null ? "add all the missing wicket components to the " + getMethodName()
+				: "adds a <b>new " + template + "(\"" + wicketId + "\");</b> to the " + getMethodName());
 	}
 
 	public String getDisplayString() {

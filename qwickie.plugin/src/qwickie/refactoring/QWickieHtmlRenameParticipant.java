@@ -54,7 +54,9 @@ public class QWickieHtmlRenameParticipant extends RenameParticipant {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant# checkConditions(org.eclipse.core.runtime.IProgressMonitor,
+	 * @see
+	 * org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
+	 * checkConditions(org.eclipse.core.runtime.IProgressMonitor,
 	 * org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext)
 	 */
 	@Override
@@ -66,7 +68,9 @@ public class QWickieHtmlRenameParticipant extends RenameParticipant {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant# createChange(org.eclipse.core.runtime.IProgressMonitor)
+	 * @see
+	 * org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
+	 * createChange(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
 	public Change createChange(final IProgressMonitor paramIProgressMonitor) throws CoreException, OperationCanceledException {
@@ -91,7 +95,9 @@ public class QWickieHtmlRenameParticipant extends RenameParticipant {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant# getName()
+	 * @see
+	 * org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
+	 * getName()
 	 */
 	@Override
 	public String getName() {
@@ -101,7 +107,9 @@ public class QWickieHtmlRenameParticipant extends RenameParticipant {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant# initialize(java.lang.Object)
+	 * @see
+	 * org.eclipse.ltk.core.refactoring.participants.RefactoringParticipant#
+	 * initialize(java.lang.Object)
 	 */
 	@Override
 	protected boolean initialize(final Object paramObject) {

@@ -114,8 +114,11 @@ public class FileSearcher implements IResourceVisitor {
 
 	/**
 	 * Takes a full filename and removes any possible source folders
-	 * @param project used to get the source folders
-	 * @param fileName the fullpath as portable string
+	 * 
+	 * @param project
+	 *            used to get the source folders
+	 * @param fileName
+	 *            the fullpath as portable string
 	 * @return the fullpath without any source folders
 	 */
 	public static String removeSourceFolder(final IProject project, String fileName) {
@@ -128,8 +131,10 @@ public class FileSearcher implements IResourceVisitor {
 	}
 
 	/**
-	 * Checks whether the two resources are in the same relative path to their respective source folders. The resources have to be in the same (java) project.
-	 * returns true if the resources have the same relative path, false in all other cases.
+	 * Checks whether the two resources are in the same relative path to their
+	 * respective source folders. The resources have to be in the same (java)
+	 * project. returns true if the resources have the same relative path, false
+	 * in all other cases.
 	 * 
 	 * @param one
 	 *            , the one resource you would like to check

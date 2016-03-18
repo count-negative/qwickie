@@ -27,7 +27,9 @@ public class QWickieHandler extends AbstractHandler {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
+	 * @see
+	 * org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.
+	 * ExecutionEvent)
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IEditorPart editor = HandlerUtil.getActiveEditor(event);
@@ -44,7 +46,10 @@ public class QWickieHandler extends AbstractHandler {
 			boolean isJavaFile = textEditor.getEditorInput().getName().endsWith(".java");
 			boolean isHtmlFile = textEditor.getEditorInput().getName().endsWith(".html");
 			IDocument document = textEditor.getDocumentProvider().getDocument(textEditor.getEditorInput());
-			if (document != null /* && document instanceof IStructuredDocument */) {
+			if (document != null /*
+									 * && document instanceof
+									 * IStructuredDocument
+									 */) {
 				ITextSelection textSelection = getCurrentSelection(textEditor);
 				if (!textSelection.isEmpty()) {
 					IRegion wicketIdRegion = null;

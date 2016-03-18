@@ -32,7 +32,8 @@ import org.eclipse.wst.html.ui.internal.Logger;
 import org.eclipse.wst.html.ui.internal.wizard.NewHTMLWizard;
 
 /**
- * QWickieNewWebPageWizard, creates new Wicket WebPages as java class with corresponding html file
+ * QWickieNewWebPageWizard, creates new Wicket WebPages as java class with
+ * corresponding html file
  * 
  * @author count.negative
  * 

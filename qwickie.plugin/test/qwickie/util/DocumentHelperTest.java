@@ -89,11 +89,15 @@ public class DocumentHelperTest {
 	public void testGetWicketNamespace() {
 		long start = System.nanoTime();
 
-		String namespacePrefix = DocumentHelper.getWicketNamespace("<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:wicket=\"http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd\" xml:lang=\"da\" lang=\"da\">");
+		String namespacePrefix = DocumentHelper.getWicketNamespace(
+				"<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:wicket=\"http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd\" xml:lang=\"da\" lang=\"da\">");
 		assertEquals(namespacePrefix, "wicket");
-		namespacePrefix = DocumentHelper.getWicketNamespace("<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:pick=\"http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd\" xml:lang=\"da\" lang=\"da\">");
+		namespacePrefix = DocumentHelper.getWicketNamespace(
+				"<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:pick=\"http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd\" xml:lang=\"da\" lang=\"da\">");
 		assertEquals(namespacePrefix, "pick");
-		namespacePrefix = DocumentHelper.getWicketNamespace("<html xmlns=\"http://www.w3.org/1999/xhtml\"  \r\n" + "      xmlns:lol=\"http://wicket.apache.org/dtds.data/wicket-xhtml1.3-strict.dtd\"  \r\n" + "      xml:lang=\"en\"  \r\n" + "      lang=\"en\"> ");
+		namespacePrefix = DocumentHelper.getWicketNamespace(
+				"<html xmlns=\"http://www.w3.org/1999/xhtml\"  \r\n" + "      xmlns:lol=\"http://wicket.apache.org/dtds.data/wicket-xhtml1.3-strict.dtd\"  \r\n"
+						+ "      xml:lang=\"en\"  \r\n" + "      lang=\"en\"> ");
 		assertEquals(namespacePrefix, "lol");
 
 		System.out.println("testGetWicketNamespace:\t\t" + (System.nanoTime() - start));

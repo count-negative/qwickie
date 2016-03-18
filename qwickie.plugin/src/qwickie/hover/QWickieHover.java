@@ -100,8 +100,8 @@ public class QWickieHover implements IJavaEditorTextHover {
 						}
 						if (line.contains(wid_const + ":id=\"" + wicketId + "\"")) {
 							text = "<b>Line in " + file.getName() + "</b><br>";
-							text += Strings.trimLeadingTabsAndSpaces(line).replaceAll("<", "&lt;")
-									.replaceAll("\"" + wicketId + "\"", "<b>\"" + wicketId + "\"</b>");
+							text += Strings.trimLeadingTabsAndSpaces(line).replaceAll("<", "&lt;").replaceAll("\"" + wicketId + "\"",
+									"<b>\"" + wicketId + "\"</b>");
 							break;
 						}
 					}

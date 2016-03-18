@@ -51,9 +51,8 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
-	 * )
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.
+	 * BundleContext )
 	 */
 	@Override
 	public void start(final BundleContext context) throws Exception {
@@ -64,9 +63,8 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
-	 * )
+	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.
+	 * BundleContext )
 	 */
 	@Override
 	public void stop(final BundleContext context) throws Exception {
@@ -106,7 +104,9 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 	}
 
 	/**
-	 * if any corresponding wicket files (html/properties) should be opened when opening a java file
+	 * if any corresponding wicket files (html/properties) should be opened when
+	 * opening a java file
+	 * 
 	 * @return true if any of them should (html/properties) be opened
 	 */
 	public boolean openAnyWicketFiles() {
@@ -114,7 +114,8 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 	}
 
 	/**
-	 * @return true if properties files should be opened when opening a java file
+	 * @return true if properties files should be opened when opening a java
+	 *         file
 	 */
 	public boolean openPropertiesFiles() {
 		return Boolean.TRUE.equals(getPreferenceStore().getBoolean(QWickiePreferencePage.OPEN_PROPERTIES_FILES));

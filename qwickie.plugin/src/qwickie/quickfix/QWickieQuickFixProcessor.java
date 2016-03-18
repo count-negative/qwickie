@@ -39,7 +39,8 @@ public class QWickieQuickFixProcessor implements IQuickFixProcessor {
 		List<IJavaCompletionProposal> proposals = new ArrayList<IJavaCompletionProposal>();
 		final IMarker[] markers = invocationContext.getCompilationUnit().getResource().findMarkers(QWickieBuilder.MARKER_TYPE, false, 0);
 		for (IMarker marker : markers) {
-			final QWickieQuickFixProposal qqfp = new QWickieQuickFixProposal(invocationContext.getSelectionOffset(), invocationContext.getSelectionLength(), marker);
+			final QWickieQuickFixProposal qqfp = new QWickieQuickFixProposal(invocationContext.getSelectionOffset(), invocationContext.getSelectionLength(),
+					marker);
 			if (qqfp.getDisplayString() != null) {
 				proposals.add(qqfp);
 			}

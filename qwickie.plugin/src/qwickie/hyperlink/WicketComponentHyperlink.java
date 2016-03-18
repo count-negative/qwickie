@@ -16,12 +16,17 @@
  */
 package qwickie.hyperlink;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.hyperlink.IHyperlink;
 import org.eclipse.ui.IWorkbench;
@@ -29,6 +34,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+
+import qwickie.QWickieActivator;
 
 /**
  * @author count.negative
@@ -38,6 +45,8 @@ public class WicketComponentHyperlink implements IHyperlink {
 	private final String wcName;
 	private final IRegion region;
 	private IFile file;
+	private final IPreferenceStore store = QWickieActivator.getDefault().getPreferenceStore();
+	private List<String> excludes = new ArrayList<String>();
 
 	public WicketComponentHyperlink(final IRegion region, final String wcName) {
 		Assert.isNotNull(wcName);
@@ -45,6 +54,7 @@ public class WicketComponentHyperlink implements IHyperlink {
 
 		this.region = region;
 		this.wcName = wcName;
+		excludes = Arrays.asList(store.getString("excludes").split(","));
 		findFile(wcName + ".html");
 	}
 
@@ -80,7 +90,20 @@ public class WicketComponentHyperlink implements IHyperlink {
 
 							public boolean visit(final IResource resource) throws CoreException {
 								if (resource.getName().equals(filename)) {
-									file = ResourcesPlugin.getWorkspace().getRoot().findFilesForLocationURI(resource.getLocationURI())[0];
+									boolean excluded = false;
+									for (String exclude : excludes) {
+										String[] segs = resource.getFullPath().segments();
+										for (String seg : segs) {
+											if (seg.equals(exclude)) {
+												excluded = true;
+												break;
+											}
+										}
+									}
+									if (!excluded) {
+										file = ResourcesPlugin.getWorkspace().getRoot().findFilesForLocationURI(resource.getLocationURI())[0];
+										return false;
+									}
 								}
 								return true;
 							}

@@ -73,7 +73,8 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 						for (int i = 1; i < ss.length; i += 2) {
 							final String proposedWid = ss[i];
 							if (proposedWid.length() > 0 && !proposedWid.contains(":") && !proposedWid.contains("~")) {
-								final CompletionProposal proposal = new CompletionProposal(proposedWid, rtr.getOffset(), existingWid.length(), rtr.getOffset(), img, proposedWid, null, line.replaceAll("\"" + proposedWid + "\"", "\"<b>" + proposedWid + "</b>\""));
+								final CompletionProposal proposal = new CompletionProposal(proposedWid, rtr.getOffset(), existingWid.length(), rtr.getOffset(),
+										img, proposedWid, null, line.replaceAll("\"" + proposedWid + "\"", "\"<b>" + proposedWid + "</b>\""));
 								proposals.put(proposedWid, proposal);
 							}
 						}
@@ -90,8 +91,10 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#computeContextInformation(org.eclipse.wst.sse.ui.contentassist.
-	 * CompletionProposalInvocationContext, org.eclipse.core.runtime.IProgressMonitor)
+	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#
+	 * computeContextInformation(org.eclipse.wst.sse.ui.contentassist.
+	 * CompletionProposalInvocationContext,
+	 * org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public List<?> computeContextInformation(final CompletionProposalInvocationContext arg0, final IProgressMonitor arg1) {
 		return null;
@@ -100,7 +103,8 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#getErrorMessage()
+	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#
+	 * getErrorMessage()
 	 */
 	public String getErrorMessage() {
 		return null;
@@ -109,7 +113,8 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#sessionEnded()
+	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#
+	 * sessionEnded()
 	 */
 	public void sessionEnded() {
 	}
@@ -117,7 +122,8 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#sessionStarted()
+	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#
+	 * sessionStarted()
 	 */
 	public void sessionStarted() {
 	}

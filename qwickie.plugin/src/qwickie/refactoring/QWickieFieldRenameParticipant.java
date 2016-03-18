@@ -63,7 +63,8 @@ public class QWickieFieldRenameParticipant extends RenameParticipant {
 	 * org.eclipse.ltk.core.refactoring.participants.CheckConditionsContext)
 	 */
 	@Override
-	public RefactoringStatus checkConditions(final IProgressMonitor paramIProgressMonitor, final CheckConditionsContext paramCheckConditionsContext) throws OperationCanceledException {
+	public RefactoringStatus checkConditions(final IProgressMonitor paramIProgressMonitor, final CheckConditionsContext paramCheckConditionsContext)
+			throws OperationCanceledException {
 		return new RefactoringStatus();
 	}
 

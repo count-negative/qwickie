@@ -53,7 +53,8 @@ public class WicketHyperlinkTest {
 		assertEquals("test", selection.getText());
 		assertEquals(7, selection.getStartLine());
 		assertEquals(7, selection.getEndLine());
-		final IResource resource = ResourceUtil.getResource(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput());
+		final IResource resource = ResourceUtil
+				.getResource(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput());
 		assertEquals("RegistrationPage.html", resource.getName());
 
 		activePage.closeAllEditors(false);
@@ -77,7 +78,8 @@ public class WicketHyperlinkTest {
 		assertEquals("test", selection.getText());
 		assertEquals(21, selection.getStartLine());
 		assertEquals(21, selection.getEndLine());
-		final IResource resource = ResourceUtil.getResource(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput());
+		final IResource resource = ResourceUtil
+				.getResource(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput());
 		assertEquals("RegistrationPage.java", resource.getName());
 
 		activePage.closeAllEditors(false);
@@ -102,7 +104,8 @@ public class WicketHyperlinkTest {
 		assertEquals("Your first name", selection.getText());
 		assertEquals(0, selection.getStartLine());
 		assertEquals(0, selection.getEndLine());
-		final IResource resource = ResourceUtil.getResource(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput());
+		final IResource resource = ResourceUtil
+				.getResource(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor().getEditorInput());
 		assertEquals("wicket-package.properties", resource.getName());
 
 		activePage.closeAllEditors(false);

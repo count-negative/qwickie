@@ -100,7 +100,8 @@ public class WicketHyperlink implements IHyperlink {
 			boolean foundInPropertiesFile = false;
 
 			for (final String toOpenFilename : toOpenFilenames) {
-				if (!samePackage(FileSearcher.removeSourceFolder(openedResource.getProject(), openedResource.getFullPath().toPortableString()), FileSearcher.removeSourceFolder(openedResource.getProject(), toOpenFilename))) {
+				if (!samePackage(FileSearcher.removeSourceFolder(openedResource.getProject(), openedResource.getFullPath().toPortableString()),
+						FileSearcher.removeSourceFolder(openedResource.getProject(), toOpenFilename))) {
 					continue;
 				}
 				try {
@@ -200,7 +201,8 @@ public class WicketHyperlink implements IHyperlink {
 				}
 			}
 			if (PROPERTIES.equals(extension) && !foundInPropertiesFile) {
-				if (createPropertiesFile(openedResource.getFullPath().removeFileExtension().addFileExtension(PROPERTIES).toPortableString(), wicketId + "=") != null) {
+				if (createPropertiesFile(openedResource.getFullPath().removeFileExtension().addFileExtension(PROPERTIES).toPortableString(),
+						wicketId + "=") != null) {
 					open();
 				}
 			}
@@ -381,7 +383,8 @@ public class WicketHyperlink implements IHyperlink {
 		if (file != null && file.exists()) {
 			filenames.add(filename);
 		} else { // if not, search for one with the same name
-			final FileSearcher fs = new FileSearcher(openedResource.getProject(), openedResource.getFullPath().removeFileExtension().lastSegment() + "*." + ext);
+			final FileSearcher fs = new FileSearcher(openedResource.getProject(),
+					openedResource.getFullPath().removeFileExtension().lastSegment() + "*." + ext);
 			try {
 				final IProject project = openedResource.getProject();
 				project.accept(fs);
@@ -399,9 +402,11 @@ public class WicketHyperlink implements IHyperlink {
 
 	private void createHtmlFile(final IWorkbench workbench) {
 		/*
-		 * Do nothing, the html creating wizard in eclipse is not very mature final NewHTMLWizard wiz = new NewHTMLWizard(); wiz.init(workbench, new
-		 * StructuredSelection()); final WizardDialog dialog = new WizardDialog(workbench.getActiveWorkbenchWindow().getShell(), wiz); dialog.create();
-		 * dialog.open();
+		 * Do nothing, the html creating wizard in eclipse is not very mature
+		 * final NewHTMLWizard wiz = new NewHTMLWizard(); wiz.init(workbench,
+		 * new StructuredSelection()); final WizardDialog dialog = new
+		 * WizardDialog(workbench.getActiveWorkbenchWindow().getShell(), wiz);
+		 * dialog.create(); dialog.open();
 		 */
 	}
 

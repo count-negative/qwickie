@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
@@ -38,9 +40,10 @@ public class FileSearcherTest {
 		} catch (CoreException e) {
 		}
 		List<IFile> foundFiles = fs.getFoundFiles();
-		assertEquals(foundFiles.size(), 2);
-		assertEquals(foundFiles.get(0).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/xml/HomePage.java");
-		assertEquals(foundFiles.get(1).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/HomePage.java");
+		List<String> filenames = asString(foundFiles);
+		assertEquals(filenames.size(), 2);
+		assertEquals(filenames.get(0), "/testproject/src/main/java/org/qwickie/test/project/xml/HomePage.java");
+		assertEquals(filenames.get(1), "/testproject/src/main/java/org/qwickie/test/project/HomePage.java");
 
 		fs = new FileSearcher(project, "HomePage*");
 		try {
@@ -48,15 +51,16 @@ public class FileSearcherTest {
 		} catch (CoreException e) {
 		}
 		foundFiles = fs.getFoundFiles();
-		assertEquals(foundFiles.size(), 8);
-		assertEquals(foundFiles.get(0).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/HomePage_us_1.properties");
-		assertEquals(foundFiles.get(1).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/HomePage_us_1.html");
-		assertEquals(foundFiles.get(2).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/HomePage_en.properties");
-		assertEquals(foundFiles.get(3).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/HomePage_en.html");
-		assertEquals(foundFiles.get(4).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/HomePage_de_1.properties");
-		assertEquals(foundFiles.get(5).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/HomePage_de_1.html");
-		assertEquals(foundFiles.get(6).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/HomePage_de.properties");
-		assertEquals(foundFiles.get(7).getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/HomePage_de.html");
+		filenames = asString(foundFiles);
+		assertEquals(filenames.size(), 8);
+		assertEquals(filenames.get(0), "/testproject/src/main/java/org/qwickie/test/project/HomePage_us_1.properties");
+		assertEquals(filenames.get(1), "/testproject/src/main/java/org/qwickie/test/project/HomePage_us_1.html");
+		assertEquals(filenames.get(2), "/testproject/src/main/java/org/qwickie/test/project/HomePage_en.properties");
+		assertEquals(filenames.get(3), "/testproject/src/main/java/org/qwickie/test/project/HomePage_en.html");
+		assertEquals(filenames.get(4), "/testproject/src/main/java/org/qwickie/test/project/HomePage_de_1.properties");
+		assertEquals(filenames.get(5), "/testproject/src/main/java/org/qwickie/test/project/HomePage_de_1.html");
+		assertEquals(filenames.get(6), "/testproject/src/main/java/org/qwickie/test/project/HomePage_de.properties");
+		assertEquals(filenames.get(7), "/testproject/src/main/java/org/qwickie/test/project/HomePage_de.html");
 
 		System.out.println("testGetFoundFiles:\t\t" + (System.nanoTime() - start));
 	}
@@ -95,10 +99,14 @@ public class FileSearcherTest {
 	public void testRemoveSourceFolder() {
 		long start = System.nanoTime();
 
-		assertEquals("/org/qwickie/test/project/issue45/mobile/RegistrationPage.java", FileSearcher.removeSourceFolder(project, "/testproject/src/main/java/org/qwickie/test/project/issue45/mobile/RegistrationPage.java"));
-		assertEquals("/org/qwickie/test/project/issue45/web/RegistrationPage.java", FileSearcher.removeSourceFolder(project, "/testproject/src/main/java/org/qwickie/test/project/issue45/web/RegistrationPage.java"));
-		assertEquals("/org/qwickie/test/project/issue45/mobile/RegistrationPage.html", FileSearcher.removeSourceFolder(project, "/testproject/src/main/resources/org/qwickie/test/project/issue45/mobile/RegistrationPage.html"));
-		assertEquals("/org/qwickie/test/project/issue45/web/RegistrationPage.html", FileSearcher.removeSourceFolder(project, "/testproject/src/main/resources/org/qwickie/test/project/issue45/web/RegistrationPage.html"));
+		assertEquals("/org/qwickie/test/project/issue45/mobile/RegistrationPage.java",
+				FileSearcher.removeSourceFolder(project, "/testproject/src/main/java/org/qwickie/test/project/issue45/mobile/RegistrationPage.java"));
+		assertEquals("/org/qwickie/test/project/issue45/web/RegistrationPage.java",
+				FileSearcher.removeSourceFolder(project, "/testproject/src/main/java/org/qwickie/test/project/issue45/web/RegistrationPage.java"));
+		assertEquals("/org/qwickie/test/project/issue45/mobile/RegistrationPage.html",
+				FileSearcher.removeSourceFolder(project, "/testproject/src/main/resources/org/qwickie/test/project/issue45/mobile/RegistrationPage.html"));
+		assertEquals("/org/qwickie/test/project/issue45/web/RegistrationPage.html",
+				FileSearcher.removeSourceFolder(project, "/testproject/src/main/resources/org/qwickie/test/project/issue45/web/RegistrationPage.html"));
 
 		System.out.println("testRemoveSourceFolder:\t\t" + (System.nanoTime() - start));
 	}
@@ -119,4 +127,12 @@ public class FileSearcherTest {
 		System.out.println("testGetPropertiesFile:\t\t" + (System.nanoTime() - start));
 	}
 
+	private List<String> asString(List<IFile> foundFiles) {
+		List<String> ret = new ArrayList<String>();
+		for (IFile file : foundFiles) {
+			ret.add(file.getFullPath().toPortableString());
+		}
+		Collections.reverse(ret);
+		return ret;
+	}
 }
