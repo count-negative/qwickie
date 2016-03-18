@@ -76,7 +76,8 @@ public class FileSearcherTest {
 		}
 		IFile foundFile = fs.getFoundFile();
 		assertNotNull(foundFile);
-		assertEquals(foundFile.getFullPath().toPortableString(), "/testproject/src/main/java/org/qwickie/test/project/xml/HomePage.java");
+		assertTrue(foundFile.getFullPath().toPortableString().contains("/testproject/src/main/java/org/qwickie/test/project"));
+		assertTrue(foundFile.getFullPath().toPortableString().contains("HomePage.java"));
 
 		System.out.println("testGetFoundFile:\t\t" + (System.nanoTime() - start));
 	}
