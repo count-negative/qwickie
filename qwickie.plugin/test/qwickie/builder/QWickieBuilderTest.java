@@ -68,27 +68,29 @@ public class QWickieBuilderTest {
 			final IMarker[] markers = project.findMarkers(QWickieBuilder.MARKER_TYPE, false, IResource.DEPTH_INFINITE);
 			assertEquals(2, markers.length);
 
-			assertEquals("BuilderPage.java", markers[0].getResource().getName());
-			assertEquals("wicket:id \"testDiv\" not found in java file(s)", markers[0].getAttribute("message"));
-			assertEquals("testDiv", markers[0].getAttribute("wicketId"));
-			assertEquals(Boolean.TRUE, markers[0].getAttribute("org.eclipse.core.resources.problemmarker"));
-			assertEquals(1, markers[0].getAttribute("priority"));
-			assertEquals(107, markers[0].getAttribute("charStart"));
-			assertEquals(4, markers[0].getAttribute("lineNumber"));
-			assertEquals(2, markers[0].getAttribute("severity"));
-			assertEquals(118, markers[0].getAttribute("charEnd"));
-			assertEquals("div", markers[0].getAttribute("htmlSnippet"));
+			IMarker javaMarker = markers[0].getResource().getName().endsWith("java") ? markers[0] : markers[1];
+			assertEquals("BuilderPage.java", javaMarker.getResource().getName());
+			assertEquals("wicket:id \"testDiv\" not found in java file(s)", javaMarker.getAttribute("message"));
+			assertEquals("testDiv", javaMarker.getAttribute("wicketId"));
+			assertEquals(Boolean.TRUE, javaMarker.getAttribute("org.eclipse.core.resources.problemmarker"));
+			assertEquals(1, javaMarker.getAttribute("priority"));
+			assertEquals(107, javaMarker.getAttribute("charStart"));
+			assertEquals(4, javaMarker.getAttribute("lineNumber"));
+			assertEquals(2, javaMarker.getAttribute("severity"));
+			assertEquals(118, javaMarker.getAttribute("charEnd"));
+			assertEquals("div", javaMarker.getAttribute("htmlSnippet"));
 
-			assertEquals("BuilderPage.html", markers[1].getResource().getName());
-			assertEquals("wicket:id \"testDiv\" not found in java file(s)", markers[1].getAttribute("message"));
-			assertEquals("testDiv", markers[1].getAttribute("wicketId"));
-			assertEquals(Boolean.TRUE, markers[1].getAttribute("org.eclipse.core.resources.problemmarker"));
-			assertEquals(1, markers[1].getAttribute("priority"));
-			assertEquals(255, markers[1].getAttribute("charStart"));
-			assertEquals(7, markers[1].getAttribute("lineNumber"));
-			assertEquals(2, markers[1].getAttribute("severity"));
-			assertEquals(262, markers[1].getAttribute("charEnd"));
-			assertEquals("div", markers[1].getAttribute("htmlSnippet"));
+			IMarker htmlMarker = markers[0].getResource().getName().endsWith("html") ? markers[0] : markers[1];
+			assertEquals("BuilderPage.html", htmlMarker.getResource().getName());
+			assertEquals("wicket:id \"testDiv\" not found in java file(s)", htmlMarker.getAttribute("message"));
+			assertEquals("testDiv", htmlMarker.getAttribute("wicketId"));
+			assertEquals(Boolean.TRUE, htmlMarker.getAttribute("org.eclipse.core.resources.problemmarker"));
+			assertEquals(1, htmlMarker.getAttribute("priority"));
+			assertEquals(255, htmlMarker.getAttribute("charStart"));
+			assertEquals(7, htmlMarker.getAttribute("lineNumber"));
+			assertEquals(2, htmlMarker.getAttribute("severity"));
+			assertEquals(262, htmlMarker.getAttribute("charEnd"));
+			assertEquals("div", htmlMarker.getAttribute("htmlSnippet"));
 		} catch (CoreException e) {
 		}
 
