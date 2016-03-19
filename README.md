@@ -9,7 +9,7 @@ This is an eclipse plugin for the Java Webframework Wicket from apache.org
 http://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml
 ```
 
-Current version: **1.1.10**
+Current version: **1.1.11**
 
 ## Usage: ##
 
