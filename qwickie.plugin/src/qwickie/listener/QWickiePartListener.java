@@ -34,14 +34,14 @@ public class QWickiePartListener implements IPartListener {
 
 	public void partOpened(final IWorkbenchPart part) {
 		if (part instanceof CompilationUnitEditor) {// JAVA
-			CompilationUnitEditor editor = (CompilationUnitEditor) part;
-			final IResource openedResource = (IResource) editor.getEditorInput().getAdapter(IResource.class);
+			final CompilationUnitEditor editor = (CompilationUnitEditor) part;
+			final IResource openedResource = editor.getEditorInput().getAdapter(IResource.class);
 			String extension = "";
 			if (!QWickieActivator.getDefault().openHTMLFiles() && QWickieActivator.getDefault().openPropertiesFiles()) {
 				extension = WicketHyperlink.PROPERTIES;
 			}
 			final List<String> filenamesToOpen = new WicketHyperlink(new Region(1, 1), "", WicketHyperlink.JAVA).getFilenamesToOpen(openedResource, extension);
-			for (String fileName : filenamesToOpen) {
+			for (final String fileName : filenamesToOpen) {
 				try {
 					final IFile file = WicketHyperlink.getFile(fileName);
 					if (file != null && file.exists()) {
@@ -50,7 +50,7 @@ public class QWickiePartListener implements IPartListener {
 							IDE.openEditor(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage(), file);
 						}
 					}
-				} catch (PartInitException e) {
+				} catch (final PartInitException e) {
 				}
 			}
 		} else if (part instanceof StructuredTextEditor) { // HTML
@@ -71,8 +71,9 @@ public class QWickiePartListener implements IPartListener {
 					final IWorkbenchPage activePage = workbenchWindow.getActivePage();
 					if (activePage != null) {
 						final IEditorReference[] editorReferences = activePage.getEditorReferences();
-						for (IEditorReference editorReference : editorReferences) {
-							if (editorReference.getPartName().startsWith(className)) {
+						for (final IEditorReference editorReference : editorReferences) {
+							final String partName = editorReference.getPartName();
+							if (partName != null && partName.startsWith(className)) {
 								part.getSite().getPage().closeEditor(editorReference.getEditor(false), true);
 							}
 						}
