@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <description name="qwickie" url="http://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
+   <description name="qwickie" url="https://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
       qwickie is a plugin for the webframework Wicket at apache.org
    </description>
    <feature url="features/qwickie.feature_1.1.10.201505151949.jar" id="qwickie.feature" version="1.1.10.201505151949">
@@ -10,7 +10,7 @@
       <category name="qwickie"/>
    </feature>
    <category-def name="qwickie" label="qwickie">
-      <description name="qwickie" url="http://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
+      <description name="qwickie" url="https://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
          qwickie is a plugin for the webframework Wicket at apache.org
       </description>
    </category-def>
