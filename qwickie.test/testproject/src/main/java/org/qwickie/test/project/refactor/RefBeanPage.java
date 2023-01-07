@@ -1,6 +1,5 @@
 package org.qwickie.test.project.refactor;
 
-
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -8,17 +7,13 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
 
 public class RefBeanPage extends WebPage {
+	private static final long serialVersionUID = 1L;
 
 	PersonBean person = new PersonBean();
 
 	public RefBeanPage() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.apache.wicket.Component#onInitialize()
-	 */
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
@@ -32,5 +27,4 @@ public class RefBeanPage extends WebPage {
 
 		add(new Label("person.name"));
 	}
-
 }

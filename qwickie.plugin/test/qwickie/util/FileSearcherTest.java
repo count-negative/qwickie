@@ -87,7 +87,7 @@ public class FileSearcherTest {
 		long start = System.nanoTime();
 
 		final List<IPath> sourceFolders = FileSearcher.getSourceFolders(project);
-		assertEquals(sourceFolders.size(), 4);
+		assertEquals(4, sourceFolders.size());
 		assertTrue(sourceFolders.contains(new Path("/testproject/src/main/java")));
 		assertTrue(sourceFolders.contains(new Path("/testproject/src/main/resources")));
 		assertTrue(sourceFolders.contains(new Path("/testproject/src/test/java")));

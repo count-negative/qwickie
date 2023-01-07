@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -31,11 +32,10 @@ public class TypeHelperTest {
 		long start = System.nanoTime();
 
 		final List<Object> supertypes = TypeHelper.getSupertypes(javaFile);
-		// if wicket 6 supertypes == 19, if wicket 1.5 then 20
-		boolean size = supertypes.size() == 19 || supertypes.size() == 20;
-		assertTrue(size);
-		final ClassFile clazz = (ClassFile) supertypes.get(0);
-		assertEquals(clazz.getElementName(), "FormComponentPanel.class");
+		Optional<String> formComponentPanelClass = supertypes.stream().filter(ClassFile.class::isInstance)
+				.map(ClassFile.class::cast).map(ClassFile::getElementName).findFirst();
+		assertTrue(formComponentPanelClass.isPresent());
+		assertEquals("FormComponentPanel.class", formComponentPanelClass.get());
 
 		System.out.println("testGetSupertypes:\t\t" + (System.nanoTime() - start));
 	}

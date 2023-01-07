@@ -133,18 +133,20 @@ public class QWickieHtmlHyperlinkDetectorTest {
 		IFile file = project.getFile("src/main/java/org/qwickie/test/project/xml/HomePage.html");
 		InputStream contents;
 		Document document = null;
+		String documentText = null;
 		try {
 			contents = file.getContents(true);
 			byte[] b = new byte[contents.available()];
 			contents.read(b);
 			contents.close();
-			document = new Document(new String(b));
+			documentText = new String(b);
+			document = new Document(documentText);
 		} catch (Exception e1) {
 		}
 		QWickieHtmlHyperlinkDetector detector = new QWickieHtmlHyperlinkDetector();
 		ITextViewer textViewer = new TextViewer(new Shell(), 0);
 		textViewer.setDocument(document);
-		IRegion region = new Region(296, 1);
+		IRegion region = new Region(309, 1);
 		final IHyperlink[] hyperlinks = detector.detectHyperlinks(textViewer, region, false);
 		assertEquals(hyperlinks.length, 1);
 		final IHyperlink hyperlink = hyperlinks[0];

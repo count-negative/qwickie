@@ -17,13 +17,13 @@ public class FieldsPanel extends AbstractFieldsPanel {
 		add(new Label("label"));
 		add(new Label("labelo"));
 
-		final Form f = new Form("form");
+		final Form<?> f = new Form<>("form");
 		add(f);
 		f.add(new Label("a"));
-		f.add(new TextField<String>("txt1"));
-		f.add(new TextField("txt2"));
+		f.add(new TextField<>("txt1"));
+		f.add(new TextField<>("txt2"));
 		f.add(new CheckBox("booleanProperty"));
-		f.add(new DropDownChoice("sel"));
+		f.add(new DropDownChoice<>("sel"));
 		f.add(new Button("submit"));
 		f.add(newLabel(LE_STRING));
 

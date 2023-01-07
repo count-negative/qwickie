@@ -7,21 +7,21 @@ import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 
 public class ModalPanel extends Panel {
+	private static final long serialVersionUID = 1L;
+
 	public MarkupContainer add;
 
 	private AjaxLink<Void> link;
+
 	public ModalPanel(String id) {
 		super(id);
 		link = new AjaxLink<Void>("link") {
-
 			private static final long serialVersionUID = -3279080806930742579L;
 
 			@Override
 			public void onClick(AjaxRequestTarget target) {
 			}
-
 		};
 		add = add(new EmptyPanel("content").setOutputMarkupPlaceholderTag(true));
-
 	}
 }

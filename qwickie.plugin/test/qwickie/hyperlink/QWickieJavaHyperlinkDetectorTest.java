@@ -182,7 +182,7 @@ public class QWickieJavaHyperlinkDetectorTest {
 
 		IRegion region = new Region(1052, 1);
 		IHyperlink[] hyperlinks = detector.detectHyperlinks(textViewer, region, false);
-		assertEquals(hyperlinks.length, 2);
+		assertEquals(2, hyperlinks.length);
 		final IHyperlink wicketHyperlink = hyperlinks[0];
 		final IHyperlink componentHyperlink = hyperlinks[1];
 		assertEquals("WicketHyperlink for wicket:id \"content\" to html file", wicketHyperlink.toString());

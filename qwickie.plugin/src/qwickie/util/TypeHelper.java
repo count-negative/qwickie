@@ -88,7 +88,7 @@ public final class TypeHelper {
 		Assert.isNotNull(javaFile);
 		final Set<JavaElement> set = new HashSet<JavaElement>();
 
-		final ASTParser parser = ASTParser.newParser(AST.JLS4);
+		final ASTParser parser = ASTParser.newParser(AST.getJLSLatest());
 		parser.setResolveBindings(true);
 		parser.setSource(JavaCore.createCompilationUnitFrom(javaFile));
 		final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
@@ -137,7 +137,7 @@ public final class TypeHelper {
 		Assert.isNotNull(javaFile);
 		final List<IVariableBinding> list = new ArrayList<IVariableBinding>();
 
-		final ASTParser parser = ASTParser.newParser(AST.JLS4);
+		final ASTParser parser = ASTParser.newParser(AST.getJLSLatest());
 		parser.setResolveBindings(true);
 		parser.setSource(JavaCore.createCompilationUnitFrom(javaFile));
 		final CompilationUnit cu = (CompilationUnit) parser.createAST(null);

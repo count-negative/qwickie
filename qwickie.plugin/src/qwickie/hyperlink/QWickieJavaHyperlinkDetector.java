@@ -52,7 +52,7 @@ public class QWickieJavaHyperlinkDetector extends AbstractHyperlinkDetector {
 		if (document == null) {
 			return null;
 		}
-		final JavaEditor editor = (JavaEditor) getAdapter(JavaEditor.class);
+		final JavaEditor editor = getAdapter(JavaEditor.class);
 		Assert.isNotNull(editor);
 
 		String wicketId = null;

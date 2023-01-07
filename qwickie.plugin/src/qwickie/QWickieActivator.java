@@ -87,7 +87,8 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 	 * @see org.eclipse.ui.IStartup#earlyStartup()
 	 */
 	public void earlyStartup() {
-		// TODO: Early startup via <extension point="org.eclipse.ui.startup"></extension> not needed. Remove?
+		// TODO: Early startup via <extension
+		// point="org.eclipse.ui.startup"></extension> not needed. Remove?
 
 		getPreferenceStore().setDefault(QWickiePreferencePage.ADD_NEW_COMPONENTS, "init");
 		getPreferenceStore().setDefault(QWickiePreferencePage.OPEN_HTML_FILES, false);
@@ -114,8 +115,7 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 	}
 
 	/**
-	 * @return true if properties files should be opened when opening a java
-	 *         file
+	 * @return true if properties files should be opened when opening a java file
 	 */
 	public boolean openPropertiesFiles() {
 		return Boolean.TRUE.equals(getPreferenceStore().getBoolean(QWickiePreferencePage.OPEN_PROPERTIES_FILES));
@@ -131,12 +131,10 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 	public void addPartListener() {
 		// add Listener to get events when open/closing files in editor
 		final IWorkbench workbench = PlatformUI.getWorkbench();
-		workbench.getDisplay().asyncExec(new Runnable() {
-			public void run() {
-				IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-				if (window != null) {
-					window.getActivePage().addPartListener(partListener);
-				}
+		workbench.getDisplay().asyncExec(() -> {
+			IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+			if (window != null) {
+				window.getActivePage().addPartListener(partListener);
 			}
 		});
 	}
@@ -144,12 +142,10 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 	public void removePartListener() {
 		// add Listener to get events when open/closing files in editor
 		final IWorkbench workbench = PlatformUI.getWorkbench();
-		workbench.getDisplay().asyncExec(new Runnable() {
-			public void run() {
-				IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-				if (window != null) {
-					window.getActivePage().removePartListener(partListener);
-				}
+		workbench.getDisplay().asyncExec(() -> {
+			IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+			if (window != null) {
+				window.getActivePage().removePartListener(partListener);
 			}
 		});
 	}
