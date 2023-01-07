@@ -38,9 +38,9 @@ import qwickie.util.DocumentHelper;
 
 /**
  * Hover shows the html line for this wicket:id
- * 
+ *
  * @author count.negative
- * 
+ *
  */
 @SuppressWarnings("restriction")
 public class QWickieHover implements IJavaEditorTextHover {
@@ -48,7 +48,7 @@ public class QWickieHover implements IJavaEditorTextHover {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.jdt.ui.text.java.hover.IJavaEditorTextHover#setEditor(org
 	 * .eclipse.ui.IEditorPart)
@@ -59,7 +59,7 @@ public class QWickieHover implements IJavaEditorTextHover {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.jface.text.ITextHover#getHoverInfo(org.eclipse.jface.text
 	 * .ITextViewer, org.eclipse.jface.text.IRegion)
@@ -80,12 +80,12 @@ public class QWickieHover implements IJavaEditorTextHover {
 		} catch (final BadLocationException e1) {
 		}
 
-		final IResource openedResource = (IResource) editor.getEditorInput().getAdapter(IResource.class);
+		final IResource openedResource = editor.getEditorInput().getAdapter(IResource.class);
 		if (openedResource == null) {
 			return text;
 		}
 		final List<String> toOpenFilenames = WicketHyperlink.getHtmlFiles(openedResource);
-		for (String toOpenFilename : toOpenFilenames) {
+		for (final String toOpenFilename : toOpenFilenames) {
 
 			final IFile file = WicketHyperlink.getFile(toOpenFilename);
 			if (file != null && file.exists()) {
@@ -116,7 +116,7 @@ public class QWickieHover implements IJavaEditorTextHover {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.jface.text.ITextHover#getHoverRegion(org.eclipse.jface.text
 	 * .ITextViewer, int)

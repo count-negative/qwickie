@@ -2,15 +2,15 @@
 <feature
       id="qwickie"
       label="qwickie"
-      version="1.1.11.qualifier"
+      version="1.2.0.qualifier"
       provider-name="count.negative">
 
-   <description url="http://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
+   <description url="https://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
       qwickie is a plugin for the webframework Wicket at apache.org
    </description>
 
    <url>
-      <update label="qwickie" url="http://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml"/>
+      <update label="qwickie" url="https://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml"/>
    </url>
 
    <plugin

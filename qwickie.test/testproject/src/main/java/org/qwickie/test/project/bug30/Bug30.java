@@ -19,16 +19,16 @@ public class Bug30 extends WebPage {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.apache.wicket.Component#onInitialize()
 	 */
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
 
-		final ISortableDataProvider<String> dp = null;
-		final List<IColumn<String>> cols = null;
-		final DefaultDataTable<String> dt = new DefaultDataTable<String>("table", cols, dp, 10);
+		final ISortableDataProvider<String, String> dp = null;
+		final List<IColumn<String, String>> cols = null;
+		final DefaultDataTable<String, String> dt = new DefaultDataTable<String, String>("table", cols, dp, 10);
 		add(dt);
 
 		final FilterForm<String> form = new FilterForm<String>("filter-form", (IFilterStateLocator<String>) dp) {
@@ -41,7 +41,7 @@ public class Bug30 extends WebPage {
 		};
 		add(form);
 		final IFilterStateLocator<String> sp = null;
-		dt.addTopToolbar(new FilterToolbar(dt, form, sp));
+		dt.addTopToolbar(new FilterToolbar(dt, form));
 	}
 
 }

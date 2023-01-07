@@ -3,20 +3,12 @@
    <description name="qwickie" url="https://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
       qwickie is a plugin for the webframework Wicket at apache.org
    </description>
-   <feature url="features/qwickie.feature_1.1.10.201505151949.jar" id="qwickie.feature" version="1.1.10.201505151949">
-      <category name="qwickie Backup"/>
-   </feature>
-   <feature url="features/qwickie_1.1.11.201603191805.jar" id="qwickie" version="1.1.11.201603191805">
+   <feature url="features/qwickie_1.2.0.202301071156.jar" id="qwickie" version="1.2.0.202301071156">
       <category name="qwickie"/>
    </feature>
    <category-def name="qwickie" label="qwickie">
       <description name="qwickie" url="https://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
          qwickie is a plugin for the webframework Wicket at apache.org
-      </description>
-   </category-def>
-   <category-def name="qwickie Backup" label="qwickie Backup">
-      <description>
-         Old versions of qwickie
       </description>
    </category-def>
 </site>
