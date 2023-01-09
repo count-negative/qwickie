@@ -75,36 +75,37 @@ public class QWickieQuickFixProposal implements IJavaCompletionProposal {
 		this.htmlSnippet = marker != null ? (String) marker.getAttribute(QWickieBuilder.MARKER_ATTRIB_HTML_SNIPPET) : "";
 	}
 
+	@Override
 	public void apply(final IDocument document) {
 		try {
 			if (marker != null) {
-				FindReplaceDocumentAdapter frda = new FindReplaceDocumentAdapter(document);
-				IRegion initMethodRegion = getMethodName().startsWith("constructor") ? findCTOR(frda) : findOnInitialize(frda);
-				IRegion superRegion = findSuper(frda, initMethodRegion);
-				String lineDelimiter = document.getLineDelimiter(document.getLineOfOffset(initMethodRegion.getOffset()));
+				final FindReplaceDocumentAdapter frda = new FindReplaceDocumentAdapter(document);
+				final IRegion initMethodRegion = getMethodName().startsWith("constructor") ? findCTOR(frda) : findOnInitialize(frda);
+				final IRegion superRegion = findSuper(frda, initMethodRegion);
+				final String lineDelimiter = document.getLineDelimiter(document.getLineOfOffset(initMethodRegion.getOffset()));
 				final String template = codeTemplate.get(htmlSnippet);
 				if (template == null) {
 					return;
 				}
-				String replace = (superRegion != null ? ";" : "{") + lineDelimiter + "add(new " + template + "(\"" + wicketId + "\"));";
+				final String replace = (superRegion != null ? ";" : "{") + lineDelimiter + "add(new " + template + "(\"" + wicketId + "\"));";
 				frda.replace(replace, false);
 				marker.delete();
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 		}
 	}
 
 	private IRegion findSuper(final FindReplaceDocumentAdapter frda, final IRegion initMethodRegion) throws BadLocationException {
 		final String onInitSuper = "super.onInitialize\\(";
 		final String ctorSuper = "super\\(";
-		IRegion superRegion = frda.find(initMethodRegion.getOffset(), getMethodName().startsWith("constructor") ? ctorSuper : onInitSuper, true, true, false,
+		final IRegion superRegion = frda.find(initMethodRegion.getOffset(), getMethodName().startsWith("constructor") ? ctorSuper : onInitSuper, true, true, false,
 				true);
 		frda.find(superRegion != null ? superRegion.getOffset() : initMethodRegion.getOffset(), superRegion != null ? ";" : "{", true, true, false, false);
 		return superRegion;
 	}
 
 	private IRegion findOnInitialize(final FindReplaceDocumentAdapter frda) throws BadLocationException {
-		IRegion initMethodRegion = frda.find(0, "protected void onInitialize()", true, true, false, false);
+		final IRegion initMethodRegion = frda.find(0, "protected void onInitialize()", true, true, false, false);
 		if (initMethodRegion == null) { // there is no onInitialize() method
 			MessageDialog.openWarning(null, "onInitialize() missing", "no method \"protected void onInitialize()\" found. Please create it first.");
 		}
@@ -121,19 +122,22 @@ public class QWickieQuickFixProposal implements IJavaCompletionProposal {
 		return initMethodRegion;
 	}
 
+	@Override
 	public Point getSelection(final IDocument document) {
 		return null;
 	}
 
+	@Override
 	public String getAdditionalProposalInfo() {
 		final String template = codeTemplate.get(htmlSnippet);
 		if (template == null) {
 			return null;
 		}
 		return (marker == null ? "add all the missing wicket components to the " + getMethodName()
-				: "adds a <b>new " + template + "(\"" + wicketId + "\");</b> to the " + getMethodName());
+		: "adds a <b>new " + template + "(\"" + wicketId + "\");</b> to the " + getMethodName());
 	}
 
+	@Override
 	public String getDisplayString() {
 		final String template = codeTemplate.get(htmlSnippet);
 		if (template == null) {
@@ -142,14 +146,17 @@ public class QWickieQuickFixProposal implements IJavaCompletionProposal {
 		return (marker == null ? "add missing wicket components" : "add new " + template + "(\"" + wicketId + "\")");
 	}
 
+	@Override
 	public Image getImage() {
 		return img;
 	}
 
+	@Override
 	public IContextInformation getContextInformation() {
 		return null;
 	}
 
+	@Override
 	public int getRelevance() {
 		return 0;
 	}

@@ -80,6 +80,7 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 		 * org.eclipse.core.resources.IResourceDeltaVisitor#visit(org.eclipse.
 		 * core.resources.IResourceDelta)
 		 */
+		@Override
 		public boolean visit(final IResourceDelta delta) throws CoreException {
 			final IResource resource = delta.getResource();
 			if (resource == null) {
@@ -105,6 +106,7 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 	}
 
 	class QWickieResourceVisitor implements IResourceVisitor {
+		@Override
 		public boolean visit(final IResource resource) {
 			checkWicketIds(resource);
 			// return true to continue visiting children.
@@ -241,10 +243,10 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 							}
 							if (jlc == -1) {
 								final int widPos = sc + line.indexOf("\"" + wid + "\"") + 1;
-								FindReplaceDocumentAdapter frda = new FindReplaceDocumentAdapter(document);
-								IRegion tagBegin = frda.find(widPos, "<", false, true, false, false);
+								final FindReplaceDocumentAdapter frda = new FindReplaceDocumentAdapter(document);
+								final IRegion tagBegin = frda.find(widPos, "<", false, true, false, false);
 								IRegion tagEnd = frda.find(tagBegin.getOffset(), " ", true, true, false, false);
-								String htmlTag = document.get(tagBegin.getOffset() + 1, tagEnd.getOffset() - tagBegin.getOffset() - 1);
+								final String htmlTag = document.get(tagBegin.getOffset() + 1, tagEnd.getOffset() - tagBegin.getOffset() - 1);
 								String htmlSnippet = htmlTag.toLowerCase();
 								if (htmlFile != null && "input".equals(htmlSnippet)) {
 									tagEnd = frda.find(tagBegin.getOffset(), ">", true, true, false, false);
@@ -253,7 +255,7 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 										final String[] hss = htmlSnippet.split(" ");
 										if (hss != null) {
 											for (int j = 0; j < hss.length; j++) {
-												String hs = hss[j];
+												final String hs = hss[j];
 												if (hs.startsWith("type")) {
 													htmlSnippet = htmlTag + " " + hs.replace("type=", "").split("\"")[1];
 												}
@@ -279,7 +281,7 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 		// check java files
 		if (JAVA_EXT.equals(fileExtension)) {
 			final List<String> htmlFilenames = WicketHyperlink.getHtmlFiles(resource);
-			for (String htmlFilename : htmlFilenames) {
+			for (final String htmlFilename : htmlFilenames) {
 				final IFile htmlFile = WicketHyperlink.getFile(htmlFilename);
 				checkWicketIds(htmlFile);
 			}
@@ -290,7 +292,7 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 	 * Is this file excluded from beeing checked
 	 */
 	private boolean isExcluded(final IFile file) {
-		for (String exclude : excludes) {
+		for (final String exclude : excludes) {
 			if (exclude.length() > 0 && file != null && file.getProjectRelativePath().toString().startsWith(exclude)) {
 				return true;
 			}
@@ -342,8 +344,8 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 		Assert.isNotNull(je);
 		try {
 			if (je instanceof ResolvedBinaryType) {
-				ResolvedBinaryType rbt = (ResolvedBinaryType) je;
-				String source = rbt.getSource(); // try to get the source
+				final ResolvedBinaryType rbt = (ResolvedBinaryType) je;
+				final String source = rbt.getSource(); // try to get the source
 				// shorten search for know wicket:ids
 				if ((je.getElementName().equals("FilterToolbar") && ("focus-tracker".equals(wid) || "focus-restore".equals(wid)))
 						|| ("cols".equals(wid) && je.getElementName().equals("GridView"))) {
@@ -443,10 +445,10 @@ public class QWickieBuilder extends IncrementalProjectBuilder {
 		}
 		try {
 			severity = Integer.parseInt(ssever);
-		} catch (NumberFormatException nfe) {
+		} catch (final NumberFormatException nfe) {
 			try {
 				severity = QWickiePreferencePage.SEVERITIES.valueOf(ssever).ordinal();
-			} catch (Exception ex) {
+			} catch (final Exception ex) {
 				ssever = store.getDefaultString(QWickiePreferencePage.SEVERITY);
 			}
 		}

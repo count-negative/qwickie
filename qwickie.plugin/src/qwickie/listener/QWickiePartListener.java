@@ -23,15 +23,19 @@ import qwickie.hyperlink.WicketHyperlink;
 @SuppressWarnings("restriction")
 public class QWickiePartListener implements IPartListener {
 
+	@Override
 	public void partActivated(final IWorkbenchPart part) {
 	}
 
+	@Override
 	public void partDeactivated(final IWorkbenchPart part) {
 	}
 
+	@Override
 	public void partBroughtToTop(final IWorkbenchPart part) {
 	}
 
+	@Override
 	public void partOpened(final IWorkbenchPart part) {
 		if (part instanceof CompilationUnitEditor) {// JAVA
 			final CompilationUnitEditor editor = (CompilationUnitEditor) part;
@@ -58,6 +62,7 @@ public class QWickiePartListener implements IPartListener {
 		}
 	}
 
+	@Override
 	public void partClosed(final IWorkbenchPart part) {
 		if (part instanceof CompilationUnitEditor) {// JAVA
 			if (!QWickieActivator.getDefault().openAnyWicketFiles()) {

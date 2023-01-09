@@ -43,9 +43,10 @@ import qwickie.util.DocumentHelper;
 public class QWickieHtmlProposalComputer implements ICompletionProposalComputer {
 	final Image img = new Image(Display.getCurrent(), QWickieProposalComputer.class.getResourceAsStream("/qwickie.png"));
 
+	@Override
 	public List<CompletionProposal> computeCompletionProposals(final CompletionProposalInvocationContext context, final IProgressMonitor monitor) {
 		// used a Map because CompletionProposal doesn't implement hashcode/equals
-		Map<String, CompletionProposal> proposals = new LinkedHashMap<String, CompletionProposal>();
+		final Map<String, CompletionProposal> proposals = new LinkedHashMap<String, CompletionProposal>();
 
 		final IDocument document = context.getDocument();
 		final String wicketNS = DocumentHelper.getNamespacePrefix(document);
@@ -64,11 +65,11 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 				provider.connect(javaFile);
 
 				final IDocument jdoc = provider.getDocument(javaFile);
-				int nol = jdoc.getNumberOfLines();
+				final int nol = jdoc.getNumberOfLines();
 				for (int lidx = 0; lidx < nol; lidx++) {
-					IRegion li = jdoc.getLineInformation(lidx);
-					String line = jdoc.get(li.getOffset(), li.getLength());
-					String[] ss = line.split("\"");
+					final IRegion li = jdoc.getLineInformation(lidx);
+					final String line = jdoc.get(li.getOffset(), li.getLength());
+					final String[] ss = line.split("\"");
 					if (ss.length > 1) {
 						for (int i = 1; i < ss.length; i += 2) {
 							final String proposedWid = ss[i];
@@ -82,7 +83,7 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 				}
 				provider.disconnect(javaFile);
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 		}
 
 		return new ArrayList<CompletionProposal>(proposals.values());
@@ -96,6 +97,7 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 	 * CompletionProposalInvocationContext,
 	 * org.eclipse.core.runtime.IProgressMonitor)
 	 */
+	@Override
 	public List<?> computeContextInformation(final CompletionProposalInvocationContext arg0, final IProgressMonitor arg1) {
 		return null;
 	}
@@ -106,6 +108,7 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#
 	 * getErrorMessage()
 	 */
+	@Override
 	public String getErrorMessage() {
 		return null;
 	}
@@ -116,6 +119,7 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#
 	 * sessionEnded()
 	 */
+	@Override
 	public void sessionEnded() {
 	}
 
@@ -125,6 +129,7 @@ public class QWickieHtmlProposalComputer implements ICompletionProposalComputer 
 	 * @see org.eclipse.wst.sse.ui.contentassist.ICompletionProposalComputer#
 	 * sessionStarted()
 	 */
+	@Override
 	public void sessionStarted() {
 	}
 }

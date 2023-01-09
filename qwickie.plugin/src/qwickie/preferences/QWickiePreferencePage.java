@@ -41,7 +41,7 @@ import qwickie.QWickieActivator;
 
 /**
  * @author count.negative
- * 
+ *
  */
 public class QWickiePreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
@@ -72,14 +72,14 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.jface.preference.PreferencePage#createContents(org.eclipse.
 	 * swt.widgets.Composite)
 	 */
 	@Override
 	protected Control createContents(final Composite parent) {
-		Composite composite = new Composite(parent, SWT.LEFT | SWT.TOP);
+		final Composite composite = new Composite(parent, SWT.LEFT | SWT.TOP);
 		composite.setLayout(new GridLayout());
 		composite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
@@ -87,7 +87,7 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 		addNewComponentsGroup(composite);
 		addRefactorGroup(composite);
 
-		Group group = new Group(composite, NONE);
+		final Group group = new Group(composite, NONE);
 		group.setLayout(new GridLayout());
 		group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		group.setText("When QWickie nature is enabled... (changing one of these executes a full build)");
@@ -98,7 +98,7 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 	}
 
 	private void addOpenGroup(final Composite parent) {
-		Group group = new Group(parent, NONE);
+		final Group group = new Group(parent, NONE);
 		group.setLayout(new RowLayout());
 		group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		group.setText("When a wicket java file is opened/closed, also open/close");
@@ -106,8 +106,9 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 		bOpenHTMLFiles = new Button(group, SWT.CHECK | SWT.LEFT);
 		bOpenHTMLFiles.setText("html files");
 		bOpenHTMLFiles.setSelection(getPreferenceStore().getBoolean(OPEN_HTML_FILES));
-		SelectionListener listener = new SelectionListener() {
+		final SelectionListener listener = new SelectionListener() {
 
+			@Override
 			public void widgetSelected(final SelectionEvent e) {
 				if (bOpenHTMLFiles.getSelection() || bOpenPropertiesFiles.getSelection()) {
 					QWickieActivator.getDefault().addPartListener();
@@ -116,6 +117,7 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 				}
 			}
 
+			@Override
 			public void widgetDefaultSelected(final SelectionEvent e) {
 			}
 		};
@@ -128,7 +130,7 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 	}
 
 	private void addNewComponentsGroup(final Composite parent) {
-		Group group = new Group(parent, NONE);
+		final Group group = new Group(parent, NONE);
 		group.setLayout(new GridLayout());
 		group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		group.setText("Add new components to");
@@ -143,7 +145,7 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 	}
 
 	private void addRefactorGroup(final Composite parent) {
-		Group group = new Group(parent, NONE);
+		final Group group = new Group(parent, NONE);
 		group.setLayout(new RowLayout());
 		group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		group.setText("Refactor rename");
@@ -184,9 +186,9 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 		cbSeverity.add(SEVERITIES.error.name());
 		String ssever = getPreferenceStore().getString(QWickiePreferencePage.SEVERITY);
 		try {
-			int sever = Integer.parseInt(ssever);
+			final int sever = Integer.parseInt(ssever);
 			ssever = QWickiePreferencePage.SEVERITIES.values()[sever].name();
-		} catch (NumberFormatException nfe) {
+		} catch (final NumberFormatException nfe) {
 		}
 		cbSeverity.setText(ssever);
 		cbSeverity.addSelectionListener(new SelectionAdapter() {
@@ -199,7 +201,7 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.jface.preference.PreferencePage#performDefaults()
 	 */
 	@Override
@@ -218,7 +220,7 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.jface.preference.PreferencePage#performOk()
 	 */
 	@Override
@@ -239,11 +241,12 @@ public class QWickiePreferencePage extends PreferencePage implements IWorkbenchP
 
 	private void checkRebuild() {
 		if (rebuildNeeded) {
-			GlobalBuildAction action = new GlobalBuildAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), IncrementalProjectBuilder.FULL_BUILD);
+			final GlobalBuildAction action = new GlobalBuildAction(PlatformUI.getWorkbench().getActiveWorkbenchWindow(), IncrementalProjectBuilder.FULL_BUILD);
 			action.doBuild();
 		}
 	}
 
+	@Override
 	public void init(final IWorkbench workbench) {
 		setPreferenceStore(QWickieActivator.getDefault().getPreferenceStore());
 		setMessage("QWickie settings");

@@ -37,9 +37,10 @@ public class QWickieToggleNatureAction implements IObjectActionDelegate {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
 	 */
+	@Override
 	public void run(final IAction action) {
 		final IProject project = getProject(selection);
 		if (project != null) {
@@ -58,11 +59,12 @@ public class QWickieToggleNatureAction implements IObjectActionDelegate {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.
 	 * IAction, org.eclipse.jface.viewers.ISelection)
 	 */
+	@Override
 	public void selectionChanged(final IAction action, final ISelection selection) {
 		this.selection = selection;
 
@@ -82,17 +84,18 @@ public class QWickieToggleNatureAction implements IObjectActionDelegate {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.
 	 * action.IAction, org.eclipse.ui.IWorkbenchPart)
 	 */
+	@Override
 	public void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
 	}
 
 	/**
 	 * Toggles sample nature on a project
-	 * 
+	 *
 	 * @param project
 	 *            to have sample nature added or removed
 	 */
@@ -133,7 +136,7 @@ public class QWickieToggleNatureAction implements IObjectActionDelegate {
 				if (element instanceof IProject) {
 					project = (IProject) element;
 				} else if (element instanceof IAdaptable) {
-					project = (IProject) ((IAdaptable) element).getAdapter(IProject.class);
+					project = ((IAdaptable) element).getAdapter(IProject.class);
 				}
 				return project;
 			}

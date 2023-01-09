@@ -86,16 +86,18 @@ public class WicketHyperlink implements IHyperlink {
 		this.extension = extension;
 	}
 
+	@Override
 	public IRegion getHyperlinkRegion() {
 		return this.region;
 	}
 
+	@Override
 	public void open() {
 		if (this.wicketId != null) {
 			final IWorkbench workbench = PlatformUI.getWorkbench();
 			final IWorkbenchPage activePage = workbench.getActiveWorkbenchWindow().getActivePage();
 			final IEditorInput editorInput = activePage.getActiveEditor().getEditorInput();
-			final IResource openedResource = (IResource) editorInput.getAdapter(IResource.class);
+			final IResource openedResource = editorInput.getAdapter(IResource.class);
 			final List<String> toOpenFilenames = getFilenamesToOpen(openedResource, extension);
 			boolean foundInPropertiesFile = false;
 
@@ -112,7 +114,7 @@ public class WicketHyperlink implements IHyperlink {
 						final IEditorPart editor = IDE.openEditor(activePage, file, false);
 						Assert.isNotNull(editor);
 
-						final ITextEditor textEditor = (ITextEditor) editor.getAdapter(ITextEditor.class);
+						final ITextEditor textEditor = editor.getAdapter(ITextEditor.class);
 						final IDocument document = ((textEditor).getDocumentProvider()).getDocument(editor.getEditorInput());
 						Assert.isNotNull(document);
 
@@ -123,7 +125,7 @@ public class WicketHyperlink implements IHyperlink {
 								if (region != null) {
 									while (region != null) {
 										final IRegion li = document.getLineInformationOfOffset(region.getOffset());
-										String line = document.get(li.getOffset(), li.getLength()).trim();
+										final String line = document.get(li.getOffset(), li.getLength()).trim();
 										if (line.startsWith("*") || line.startsWith("/*") || line.startsWith("//")) {
 											region = frda.find(region.getOffset() + 1, '"' + wicketId + '"', true, true, false, false);
 										} else {
@@ -147,7 +149,7 @@ public class WicketHyperlink implements IHyperlink {
 									}
 								}
 							} else if (HTML.equals(extension)) {
-								String wid_const = DocumentHelper.getNamespacePrefix(document);
+								final String wid_const = DocumentHelper.getNamespacePrefix(document);
 								final IRegion region = frda.find(0, wid_const + ":id=\"" + wicketId, true, true, true, false);
 								if (region != null) {
 									textEditor.selectAndReveal(region.getOffset() + wid_const.length() + 5, wicketId.length());
@@ -210,8 +212,8 @@ public class WicketHyperlink implements IHyperlink {
 	}
 
 	private boolean samePackage(final String portableString, final String toOpenFilename) {
-		String[] segmentsA = portableString.split("/");
-		String[] segmentsB = toOpenFilename.split("/");
+		final String[] segmentsA = portableString.split("/");
+		final String[] segmentsB = toOpenFilename.split("/");
 		if (segmentsA.length != segmentsB.length) {
 			return false;
 		}
@@ -227,7 +229,7 @@ public class WicketHyperlink implements IHyperlink {
 
 	public List<String> getFilenamesToOpen(final IResource openedResource, final String extension) {
 		Assert.isNotNull(openedResource);
-		String ressourceExtension = openedResource.getFileExtension();
+		final String ressourceExtension = openedResource.getFileExtension();
 
 		final Set<String> filenames = new LinkedHashSet<String>();
 		if (openJavaFileOnly) {
@@ -260,7 +262,7 @@ public class WicketHyperlink implements IHyperlink {
 	public static List<String> getHtmlFiles(final IResource openedResource) {
 		Assert.isNotNull(openedResource);
 		final IProject project = openedResource.getProject();
-		List<String> htmlFilenames = new ArrayList<String>();
+		final List<String> htmlFilenames = new ArrayList<String>();
 		final String filename = openedResource.getFullPath().removeFileExtension().addFileExtension(HTML).toPortableString();
 
 		final IFile file = getFile(filename);
@@ -285,13 +287,13 @@ public class WicketHyperlink implements IHyperlink {
 			} catch (final CoreException e1) {
 			}
 		}
-		FileSearcher fs = new FileSearcher(project, new Path(filename).removeFileExtension().lastSegment() + "$*");
+		final FileSearcher fs = new FileSearcher(project, new Path(filename).removeFileExtension().lastSegment() + "$*");
 		try {
 			project.accept(fs);
 			for (final IFile foundFile : fs.getFoundFiles()) {
 				htmlFilenames.add(foundFile.getFullPath().toPortableString());
 			}
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 		}
 
 		Collections.reverse(htmlFilenames);
@@ -330,11 +332,11 @@ public class WicketHyperlink implements IHyperlink {
 				project.accept(fs);
 
 				if (fs.getFoundFiles().size() > 1) { // more then one file found means, there are other packages with the same filenames
-					List<IPath> sourceRoots = FileSearcher.getSourceFolders(project);
+					final List<IPath> sourceRoots = FileSearcher.getSourceFolders(project);
 					IPath orp = openedResource.getFullPath().removeLastSegments(1);
-					for (IPath sourceRoot : sourceRoots) {
+					for (final IPath sourceRoot : sourceRoots) {
 						if (sourceRoot.isPrefixOf(orp)) {
-							for (IFile ff : fs.getFoundFiles()) {
+							for (final IFile ff : fs.getFoundFiles()) {
 								final IPath ffr = ff.getFullPath().removeFirstSegments(sourceRoot.segmentCount()).removeLastSegments(1);
 								orp = openedResource.getFullPath().removeFirstSegments(sourceRoot.segmentCount()).removeLastSegments(1);
 								if (orp.toPortableString().equals(ffr.toPortableString())) {
@@ -484,10 +486,12 @@ public class WicketHyperlink implements IHyperlink {
 		return file;
 	}
 
+	@Override
 	public String getTypeLabel() {
 		return null;
 	}
 
+	@Override
 	public String getHyperlinkText() {
 		return "Open " + extension + " file and jump to " + QWickieActivator.WICKET_ID + " \"" + wicketId + "\"";
 	}

@@ -27,9 +27,9 @@ import qwickie.util.DocumentHelper;
 
 /**
  * Hyperlinker should open the html file and jump to the corresponding wicket:id
- * 
+ *
  * @author count.negative
- * 
+ *
  */
 public class QWickieHtmlHyperlinkDetector extends AbstractHyperlinkDetector {
 
@@ -37,11 +37,12 @@ public class QWickieHtmlHyperlinkDetector extends AbstractHyperlinkDetector {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @seeorg.eclipse.jdt.internal.ui.javaeditor.JavaElementHyperlinkDetector#
 	 * detectHyperlinks(org.eclipse.jface.text.ITextViewer,
 	 * org.eclipse.jface.text.IRegion, boolean)
 	 */
+	@Override
 	public IHyperlink[] detectHyperlinks(final ITextViewer textViewer, final IRegion region, final boolean canShowMultipleHyperlinks) {
 		if ((region == null) || (textViewer == null)) {
 			return null;

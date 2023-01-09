@@ -59,7 +59,7 @@ public class QWickieHtmlProposalComputerTest {
 		IProgressMonitor monitor = new NullProgressMonitor();
 		assertEquals(proposal.computeCompletionProposals(context, monitor).size(), 0);
 
-		context = new CompletionProposalInvocationContext(viewer, 526);
+		context = new CompletionProposalInvocationContext(viewer, 539);
 		List<CompletionProposal> proposals = proposal.computeCompletionProposals(context, monitor);
 		assertEquals(7, proposals.size());
 

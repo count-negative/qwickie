@@ -42,6 +42,7 @@ public class QWickieJavaHyperlinkDetector extends AbstractHyperlinkDetector {
 	 * detectHyperlinks(org.eclipse.jface.text.ITextViewer,
 	 * org.eclipse.jface.text.IRegion, boolean)
 	 */
+	@Override
 	public IHyperlink[] detectHyperlinks(final ITextViewer textViewer, final IRegion region, final boolean canShowMultipleHyperlinks) {
 		if ((region == null) || (textViewer == null)) {
 			return null;

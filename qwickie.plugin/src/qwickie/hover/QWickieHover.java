@@ -51,6 +51,7 @@ public class QWickieHover implements IJavaEditorTextHover {
 	 * org.eclipse.jdt.ui.text.java.hover.IJavaEditorTextHover#setEditor(org
 	 * .eclipse.ui.IEditorPart)
 	 */
+	@Override
 	public void setEditor(final IEditorPart paramIEditorPart) {
 		editor = paramIEditorPart;
 	}
@@ -62,6 +63,7 @@ public class QWickieHover implements IJavaEditorTextHover {
 	 * org.eclipse.jface.text.ITextHover#getHoverInfo(org.eclipse.jface.text
 	 * .ITextViewer, org.eclipse.jface.text.IRegion)
 	 */
+	@Override
 	public String getHoverInfo(final ITextViewer textViewer, final IRegion region) {
 		Assert.isNotNull(textViewer);
 		Assert.isNotNull(region);
@@ -119,6 +121,7 @@ public class QWickieHover implements IJavaEditorTextHover {
 	 * org.eclipse.jface.text.ITextHover#getHoverRegion(org.eclipse.jface.text
 	 * .ITextViewer, int)
 	 */
+	@Override
 	public IRegion getHoverRegion(final ITextViewer textViewer, final int offset) {
 		return null;
 	}

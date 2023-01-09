@@ -63,14 +63,14 @@ public class DocumentHelperTest {
 		long start = System.nanoTime();
 
 		// searching for new Label("customer")
-		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 385), new Region(385, 8));
-		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 386), new Region(385, 8));
-		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 387), new Region(385, 8));
-		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 388), new Region(385, 8));
-		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 389), new Region(385, 8));
-		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 390), new Region(385, 8));
-		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 391), new Region(385, 8));
-		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 392), new Region(385, 8));
+		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 397), new Region(397, 8));
+		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 398), new Region(397, 8));
+		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 399), new Region(397, 8));
+		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 400), new Region(397, 8));
+		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 401), new Region(397, 8));
+		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 402), new Region(397, 8));
+		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 403), new Region(397, 8));
+		assertEquals(DocumentHelper.findStringArgumentInJava(javaDocument, 404), new Region(397, 8));
 
 		System.out.println("testFindStringArgumentInJava:\t" + (System.nanoTime() - start));
 	}
@@ -132,10 +132,10 @@ public class DocumentHelperTest {
 		}
 		final IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 		assertNull(DocumentHelper.findWicketRegions(activeEditor, javaDocument, 0));
-		final IRegion[] regions = DocumentHelper.findWicketRegions(activeEditor, javaDocument, 415);
+		final IRegion[] regions = DocumentHelper.findWicketRegions(activeEditor, javaDocument, 433);
 		assertEquals(regions.length, 3);
-		assertEquals(regions[0], new Region(415, 7));
-		assertEquals(regions[1], new Region(408, 5));
+		assertEquals(regions[0], new Region(428, 7));
+		assertEquals(regions[1], new Region(421, 5));
 
 		System.out.println("testFindWicketRegions:\t\t" + (System.nanoTime() - start));
 	}

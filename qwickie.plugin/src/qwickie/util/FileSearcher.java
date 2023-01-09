@@ -73,6 +73,7 @@ public class FileSearcher implements IResourceVisitor {
 		}
 	}
 
+	@Override
 	public boolean visit(final IResource resource) throws CoreException {
 
 		if (resource.getType() == IResource.FILE) {
@@ -114,7 +115,7 @@ public class FileSearcher implements IResourceVisitor {
 
 	/**
 	 * Takes a full filename and removes any possible source folders
-	 * 
+	 *
 	 * @param project
 	 *            used to get the source folders
 	 * @param fileName
@@ -124,7 +125,7 @@ public class FileSearcher implements IResourceVisitor {
 	public static String removeSourceFolder(final IProject project, String fileName) {
 		Assert.isNotNull(fileName);
 		final List<IPath> srcFolders = getSourceFolders(project);
-		for (IPath iPath : srcFolders) {
+		for (final IPath iPath : srcFolders) {
 			fileName = fileName.replace(iPath.toPortableString(), "");
 		}
 		return fileName;
@@ -135,7 +136,7 @@ public class FileSearcher implements IResourceVisitor {
 	 * respective source folders. The resources have to be in the same (java)
 	 * project. returns true if the resources have the same relative path, false
 	 * in all other cases.
-	 * 
+	 *
 	 * @param one
 	 *            , the one resource you would like to check
 	 * @param other
@@ -148,7 +149,7 @@ public class FileSearcher implements IResourceVisitor {
 			return false;
 		}
 
-		IProject project = one.getProject();
+		final IProject project = one.getProject();
 		// if the resources are in different projects, return false
 		if (!project.equals(other.getProject())) {
 			return false;
@@ -157,7 +158,7 @@ public class FileSearcher implements IResourceVisitor {
 		IJavaProject javaProject = null;
 		try {
 			javaProject = (IJavaProject) project.getNature(JavaCore.NATURE_ID);
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			// When it's not a java project, return false
 			return false;
 		}
@@ -169,7 +170,7 @@ public class FileSearcher implements IResourceVisitor {
 		boolean oneFound = false, otherFound = false;
 
 		try {
-			for (IPackageFragmentRoot pfr : javaProject.getPackageFragmentRoots()) {
+			for (final IPackageFragmentRoot pfr : javaProject.getPackageFragmentRoots()) {
 				if (pfr.getKind() == 1) {
 					// we've got a source path
 					// remove the first segment, since that's the project folder.
@@ -189,7 +190,7 @@ public class FileSearcher implements IResourceVisitor {
 					break;
 				}
 			}
-		} catch (JavaModelException e) {
+		} catch (final JavaModelException e) {
 			return false;
 		}
 

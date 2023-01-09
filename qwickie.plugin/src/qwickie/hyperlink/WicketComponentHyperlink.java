@@ -58,10 +58,12 @@ public class WicketComponentHyperlink implements IHyperlink {
 		findFile(wcName + ".html");
 	}
 
+	@Override
 	public IRegion getHyperlinkRegion() {
 		return this.region;
 	}
 
+	@Override
 	public void open() {
 		if (this.wcName != null) {
 			final IWorkbench workbench = PlatformUI.getWorkbench();
@@ -88,12 +90,13 @@ public class WicketComponentHyperlink implements IHyperlink {
 					if (member.isAccessible()) {
 						member.getProject().accept(new IResourceVisitor() {
 
+							@Override
 							public boolean visit(final IResource resource) throws CoreException {
 								if (resource.getName().equals(filename)) {
 									boolean excluded = false;
-									for (String exclude : excludes) {
-										String[] segs = resource.getFullPath().segments();
-										for (String seg : segs) {
+									for (final String exclude : excludes) {
+										final String[] segs = resource.getFullPath().segments();
+										for (final String seg : segs) {
 											if (seg.equals(exclude)) {
 												excluded = true;
 												break;
@@ -115,10 +118,12 @@ public class WicketComponentHyperlink implements IHyperlink {
 		}
 	}
 
+	@Override
 	public String getTypeLabel() {
 		return null;
 	}
 
+	@Override
 	public String getHyperlinkText() {
 		if (file == null) {
 			return null;

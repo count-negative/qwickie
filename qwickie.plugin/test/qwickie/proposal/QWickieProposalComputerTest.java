@@ -54,7 +54,7 @@ public class QWickieProposalComputerTest {
 
 		final ICompilationUnit cu = JavaCore.createCompilationUnitFrom(javaFile);
 		ITextViewer viewer = new TextViewer(new Shell(), 0);
-		int offset = 420;
+		int offset = 430;
 		context = new JavaContentAssistInvocationContext(viewer, offset, new CompilationUnitEditor()) {
 			@SuppressWarnings("restriction")
 			@Override
@@ -80,10 +80,10 @@ public class QWickieProposalComputerTest {
 		assertEquals(2, proposals.size());
 		assertEquals("&lt;div wicket:id=\"<b>message</b>\">&lt;/div>", proposals.get(0).getAdditionalProposalInfo());
 		assertEquals("message", proposals.get(0).getDisplayString());
-		assertEquals(415, proposals.get(0).getSelection(javaDocument).x);
+		assertEquals(428, proposals.get(0).getSelection(javaDocument).x);
 		assertEquals("&lt;div wicket:id=\"<b>message2</b>\">&lt;/div>", proposals.get(1).getAdditionalProposalInfo());
 		assertEquals("message2", proposals.get(1).getDisplayString());
-		assertEquals(415, proposals.get(1).getSelection(javaDocument).x);
+		assertEquals(428, proposals.get(1).getSelection(javaDocument).x);
 
 		offset = 421;
 		context = new ContentAssistInvocationContext(viewer, offset) {

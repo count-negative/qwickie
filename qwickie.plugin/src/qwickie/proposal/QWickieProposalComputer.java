@@ -49,7 +49,7 @@ import qwickie.util.TypeHelper;
 
 /**
  * @author count.negative
- * 
+ *
  */
 public class QWickieProposalComputer implements IJavaCompletionProposalComputer {
 
@@ -58,15 +58,16 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.jdt.internal.ui.text.java.JavaCompletionProposalComputer#
 	 * computeCompletionProposals(org.eclipse.jdt.ui.text.java.
 	 * ContentAssistInvocationContext ,
 	 * org.eclipse.core.runtime.IProgressMonitor)
 	 */
+	@Override
 	public List<ICompletionProposal> computeCompletionProposals(final ContentAssistInvocationContext context, final IProgressMonitor monitor) {
-		boolean wasEmpty = proposals.isEmpty();
+		final boolean wasEmpty = proposals.isEmpty();
 
 		if (context instanceof JavaContentAssistInvocationContext) {
 			final JavaContentAssistInvocationContext jcaic = (JavaContentAssistInvocationContext) context;
@@ -109,8 +110,8 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 											}
 
 											if (line.contains(QWickieActivator.WICKET_ID + "=\"") && !commented) {
-												String[] wids = getWicketIdsFrom(line);
-												for (String wid : wids) {
+												final String[] wids = getWicketIdsFrom(line);
+												for (final String wid : wids) {
 													final String additionalInfo = line.trim().replaceAll("<", "&lt;").replaceAll("\"" + wid + "\"",
 															"\"<b>" + wid + "</b>\"");
 													final IRegion sar = DocumentHelper.findStringArgumentInJava(document, context.getInvocationOffset());
@@ -166,7 +167,7 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 			final String[] ids = text.split("\"");
 			if (ids.length > 1) {
 				for (int i = 0; i < ids.length; i++) {
-					String id = ids[i];
+					final String id = ids[i];
 					proposals.remove(id);
 				}
 			}
@@ -175,8 +176,8 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 
 	/** get all the wicket:ids in a line of HTML */
 	private String[] getWicketIdsFrom(final String line) {
-		String[] ss = line.split(QWickieActivator.WICKET_ID + "=\"");
-		String wids[] = new String[ss.length - 1];
+		final String[] ss = line.split(QWickieActivator.WICKET_ID + "=\"");
+		final String wids[] = new String[ss.length - 1];
 		for (int i = 1; i < ss.length; i++) {
 			wids[i - 1] = ss[i].split("\"")[0];
 		}
@@ -185,22 +186,24 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#
 	 * sessionStarted()
 	 */
+	@Override
 	public void sessionStarted() {
 		proposals = new HashMap<String, CompletionProposal>();
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#
 	 * computeContextInformation(org.eclipse.jdt.ui.text.java.
 	 * ContentAssistInvocationContext,
 	 * org.eclipse.core.runtime.IProgressMonitor)
 	 */
+	@Override
 	public List<IContextInformation> computeContextInformation(final ContentAssistInvocationContext paramContentAssistInvocationContext,
 			final IProgressMonitor paramIProgressMonitor) {
 		return null;
@@ -208,21 +211,23 @@ public class QWickieProposalComputer implements IJavaCompletionProposalComputer 
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#
 	 * getErrorMessage()
 	 */
+	@Override
 	public String getErrorMessage() {
 		return null;
 	}
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.jdt.ui.text.java.IJavaCompletionProposalComputer#sessionEnded
 	 * ()
 	 */
+	@Override
 	public void sessionEnded() {
 		proposals = null;
 	}

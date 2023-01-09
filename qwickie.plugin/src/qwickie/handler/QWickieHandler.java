@@ -20,37 +20,38 @@ import qwickie.util.DocumentHelper;
 
 /**
  * @author count.negative
- * 
+ *
  */
 public class QWickieHandler extends AbstractHandler {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.
 	 * ExecutionEvent)
 	 */
-	public Object execute(ExecutionEvent event) throws ExecutionException {
-		IEditorPart editor = HandlerUtil.getActiveEditor(event);
+	@Override
+	public Object execute(final ExecutionEvent event) throws ExecutionException {
+		final IEditorPart editor = HandlerUtil.getActiveEditor(event);
 		ITextEditor textEditor = null;
 		if (editor instanceof ITextEditor) {
 			textEditor = (ITextEditor) editor;
 		} else {
-			Object o = editor.getAdapter(ITextEditor.class);
+			final Object o = editor.getAdapter(ITextEditor.class);
 			if (o != null) {
 				textEditor = (ITextEditor) o;
 			}
 		}
 		if (textEditor != null) {
-			boolean isJavaFile = textEditor.getEditorInput().getName().endsWith(".java");
-			boolean isHtmlFile = textEditor.getEditorInput().getName().endsWith(".html");
-			IDocument document = textEditor.getDocumentProvider().getDocument(textEditor.getEditorInput());
+			final boolean isJavaFile = textEditor.getEditorInput().getName().endsWith(".java");
+			final boolean isHtmlFile = textEditor.getEditorInput().getName().endsWith(".html");
+			final IDocument document = textEditor.getDocumentProvider().getDocument(textEditor.getEditorInput());
 			if (document != null /*
-									 * && document instanceof
-									 * IStructuredDocument
-									 */) {
-				ITextSelection textSelection = getCurrentSelection(textEditor);
+			 * && document instanceof
+			 * IStructuredDocument
+			 */) {
+				final ITextSelection textSelection = getCurrentSelection(textEditor);
 				if (!textSelection.isEmpty()) {
 					IRegion wicketIdRegion = null;
 
@@ -61,7 +62,7 @@ public class QWickieHandler extends AbstractHandler {
 						}
 						wicketIdRegion = wicketRegions[0];
 					} else if (isHtmlFile) {
-						QWickieHtmlHyperlinkDetector detector = new QWickieHtmlHyperlinkDetector();
+						final QWickieHtmlHyperlinkDetector detector = new QWickieHtmlHyperlinkDetector();
 						wicketIdRegion = detector.findWicketId(document, textSelection.getOffset());
 					}
 
@@ -71,10 +72,10 @@ public class QWickieHandler extends AbstractHandler {
 					String wicketId;
 					try {
 						wicketId = document.get(wicketIdRegion.getOffset(), wicketIdRegion.getLength());
-						WicketHyperlink wh = new WicketHyperlink(wicketIdRegion, wicketId, isHtmlFile ? "java" : "html");
+						final WicketHyperlink wh = new WicketHyperlink(wicketIdRegion, wicketId, isHtmlFile ? "java" : "html");
 						wh.openJavaFileOnly(isHtmlFile);
 						wh.open();
-					} catch (BadLocationException e) {
+					} catch (final BadLocationException e) {
 					}
 
 				}
@@ -83,10 +84,10 @@ public class QWickieHandler extends AbstractHandler {
 		return null;
 	}
 
-	private static ITextSelection getCurrentSelection(ITextEditor textEditor) {
-		ISelectionProvider provider = textEditor.getSelectionProvider();
+	private static ITextSelection getCurrentSelection(final ITextEditor textEditor) {
+		final ISelectionProvider provider = textEditor.getSelectionProvider();
 		if (provider != null) {
-			ISelection selection = provider.getSelection();
+			final ISelection selection = provider.getSelection();
 			if (selection instanceof ITextSelection) {
 				return (ITextSelection) selection;
 			}

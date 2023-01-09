@@ -41,12 +41,12 @@ public class QWickieHoverTest {
 		final IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 		try {
 			IDE.openEditor(activePage, javaFile);
-		} catch (PartInitException e) {
+		} catch (final PartInitException e) {
 		}
 		hover.setEditor(activePage.getActiveEditor());
 		TextViewer viewer = new TextViewer(new Shell(), 0);
 		viewer.setDocument(javaDocument);
-		assertEquals("<b>Line in HomePage.html</b><br>&lt;div wicket:id=<b>\"message\"</b>>&lt;/div>", hover.getHoverInfo(viewer, new Region(421, 0)));
+		assertEquals("<b>Line in HomePage.html</b><br>&lt;div wicket:id=<b>\"message\"</b>>&lt;/div>", hover.getHoverInfo(viewer, new Region(432, 0)));
 
 		activePage.closeAllEditors(false);
 

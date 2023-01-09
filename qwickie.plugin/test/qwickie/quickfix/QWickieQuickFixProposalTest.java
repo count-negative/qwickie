@@ -12,6 +12,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
 import org.junit.Before;
@@ -57,16 +58,17 @@ public class QWickieQuickFixProposalTest {
 			QWickieActivator.getDefault().getPreferenceStore().setValue(QWickiePreferencePage.ADD_NEW_COMPONENTS, "init");
 			assertEquals(proposal.getAdditionalProposalInfo(), "adds a <b>new SubmitLink(\"wicketId\");</b> to the onInitialize method");
 			proposal.apply(javaDocument);
-			assertTrue(javaDocument.get().contains("super.onInitialize();\nadd(new SubmitLink(\"wicketId\"));"));
+			String lineDelimiter = javaDocument.getLineDelimiter(1);
+			assertTrue(javaDocument.get().contains("super.onInitialize();" + lineDelimiter + "add(new SubmitLink(\"wicketId\"));"));
 			QWickieActivator.getDefault().getPreferenceStore().setValue(QWickiePreferencePage.ADD_NEW_COMPONENTS, "ctor");
 			proposal.apply(javaDocument);
-			assertTrue(javaDocument.get().contains("{\nadd(new SubmitLink(\"wicketId\"));"));
+			assertTrue(javaDocument.get().contains("{" + lineDelimiter + "add(new SubmitLink(\"wicketId\"));"));
 
 			assertNull(proposal.getContextInformation());
 			assertNull(proposal.getSelection(javaDocument));
 			assertEquals(proposal.getRelevance(), 0);
 			assertNotNull(proposal.getImage());
-		} catch (CoreException e) {
+		} catch (CoreException | BadLocationException e) {
 		}
 
 		System.out.println("testQuickFixProposal:\t\t" + (System.nanoTime() - start));

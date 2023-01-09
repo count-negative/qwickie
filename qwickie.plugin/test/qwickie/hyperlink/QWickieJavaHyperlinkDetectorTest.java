@@ -68,7 +68,7 @@ public class QWickieJavaHyperlinkDetectorTest {
 			assertNull(detector.detectHyperlinks(textViewer, new Region(i, 1), false));
 		}
 		IHyperlink hyperlink = null;
-		for (int i = 419; i < 431; i++) {
+		for (int i = 441; i < 453; i++) {
 			IRegion region = new Region(i, 1);
 			IHyperlink[] hyperlinks = detector.detectHyperlinks(textViewer, region, false);
 			assertEquals(hyperlinks.length, 1);
@@ -126,7 +126,7 @@ public class QWickieJavaHyperlinkDetectorTest {
 		}
 		assertNull(detector.detectHyperlinks(textViewer, new Region(255, 1), false));
 
-		IRegion region = new Region(477, 1);
+		IRegion region = new Region(498, 1);
 		IHyperlink[] hyperlinks = detector.detectHyperlinks(textViewer, region, false);
 		assertEquals(hyperlinks.length, 1);
 		final IHyperlink hyperlink = hyperlinks[0];
@@ -180,7 +180,7 @@ public class QWickieJavaHyperlinkDetectorTest {
 		}
 		assertNull(detector.detectHyperlinks(textViewer, new Region(255, 1), false));
 
-		IRegion region = new Region(1052, 1);
+		IRegion region = new Region(1080, 1);
 		IHyperlink[] hyperlinks = detector.detectHyperlinks(textViewer, region, false);
 		assertEquals(2, hyperlinks.length);
 		final IHyperlink wicketHyperlink = hyperlinks[0];

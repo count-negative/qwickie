@@ -31,14 +31,16 @@ import qwickie.builder.QWickieBuilder;
 
 public class QWickieQuickFixProcessor implements IQuickFixProcessor {
 
+	@Override
 	public boolean hasCorrections(final ICompilationUnit unit, final int problemId) {
 		return false;
 	}
 
+	@Override
 	public IJavaCompletionProposal[] getCorrections(final IInvocationContext invocationContext, final IProblemLocation[] locations) throws CoreException {
-		List<IJavaCompletionProposal> proposals = new ArrayList<IJavaCompletionProposal>();
+		final List<IJavaCompletionProposal> proposals = new ArrayList<IJavaCompletionProposal>();
 		final IMarker[] markers = invocationContext.getCompilationUnit().getResource().findMarkers(QWickieBuilder.MARKER_TYPE, false, 0);
-		for (IMarker marker : markers) {
+		for (final IMarker marker : markers) {
 			final QWickieQuickFixProposal qqfp = new QWickieQuickFixProposal(invocationContext.getSelectionOffset(), invocationContext.getSelectionLength(),
 					marker);
 			if (qqfp.getDisplayString() != null) {

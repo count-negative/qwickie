@@ -86,10 +86,10 @@ public class QWickieBuilderTest {
 			assertEquals("testDiv", htmlMarker.getAttribute("wicketId"));
 			assertEquals(Boolean.TRUE, htmlMarker.getAttribute("org.eclipse.core.resources.problemmarker"));
 			assertEquals(1, htmlMarker.getAttribute("priority"));
-			assertEquals(268, htmlMarker.getAttribute("charStart"));
+			assertEquals(275, htmlMarker.getAttribute("charStart"));
 			assertEquals(7, htmlMarker.getAttribute("lineNumber"));
 			assertEquals(2, htmlMarker.getAttribute("severity"));
-			assertEquals(275, htmlMarker.getAttribute("charEnd"));
+			assertEquals(282, htmlMarker.getAttribute("charEnd"));
 			assertEquals("div", htmlMarker.getAttribute("htmlSnippet"));
 		} catch (CoreException e) {
 		}

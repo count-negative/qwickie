@@ -50,7 +50,7 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.
 	 * BundleContext )
 	 */
@@ -62,7 +62,7 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.
 	 * BundleContext )
 	 */
@@ -74,7 +74,7 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 
 	/**
 	 * Returns the shared instance
-	 * 
+	 *
 	 * @return the shared instance
 	 */
 	public static QWickieActivator getDefault() {
@@ -83,12 +83,11 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.ui.IStartup#earlyStartup()
 	 */
+	@Override
 	public void earlyStartup() {
-		// TODO: Early startup via <extension
-		// point="org.eclipse.ui.startup"></extension> not needed. Remove?
 
 		getPreferenceStore().setDefault(QWickiePreferencePage.ADD_NEW_COMPONENTS, "init");
 		getPreferenceStore().setDefault(QWickiePreferencePage.OPEN_HTML_FILES, false);
@@ -107,7 +106,7 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 	/**
 	 * if any corresponding wicket files (html/properties) should be opened when
 	 * opening a java file
-	 * 
+	 *
 	 * @return true if any of them should (html/properties) be opened
 	 */
 	public boolean openAnyWicketFiles() {
@@ -132,7 +131,7 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 		// add Listener to get events when open/closing files in editor
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		workbench.getDisplay().asyncExec(() -> {
-			IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+			final IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 			if (window != null) {
 				window.getActivePage().addPartListener(partListener);
 			}
@@ -143,7 +142,7 @@ public class QWickieActivator extends AbstractUIPlugin implements IStartup {
 		// add Listener to get events when open/closing files in editor
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		workbench.getDisplay().asyncExec(() -> {
-			IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+			final IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 			if (window != null) {
 				window.getActivePage().removePartListener(partListener);
 			}

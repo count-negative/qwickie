@@ -63,7 +63,7 @@ public class QWickieHtmlHyperlinkDetectorTest {
 		hls = detector.detectHyperlinks(textViewer, new Region(10, 1), false);
 		assertNull(hls);
 
-		IRegion region = new Region(255, 1);
+		IRegion region = new Region(265, 1);
 		final IHyperlink[] hyperlinks = detector.detectHyperlinks(textViewer, region, false);
 		assertEquals(hyperlinks.length, 1);
 		final IHyperlink hyperlink = hyperlinks[0];
@@ -104,7 +104,7 @@ public class QWickieHtmlHyperlinkDetectorTest {
 		QWickieHtmlHyperlinkDetector detector = new QWickieHtmlHyperlinkDetector();
 		ITextViewer textViewer = new TextViewer(new Shell(), 0);
 		textViewer.setDocument(document);
-		IRegion region = new Region(255, 1);
+		IRegion region = new Region(265, 1);
 		final IHyperlink[] hyperlinks = detector.detectHyperlinks(textViewer, region, false);
 		assertEquals(hyperlinks.length, 1);
 		final IHyperlink hyperlink = hyperlinks[0];
@@ -146,7 +146,7 @@ public class QWickieHtmlHyperlinkDetectorTest {
 		QWickieHtmlHyperlinkDetector detector = new QWickieHtmlHyperlinkDetector();
 		ITextViewer textViewer = new TextViewer(new Shell(), 0);
 		textViewer.setDocument(document);
-		IRegion region = new Region(309, 1);
+		IRegion region = new Region(319, 1);
 		final IHyperlink[] hyperlinks = detector.detectHyperlinks(textViewer, region, false);
 		assertEquals(hyperlinks.length, 1);
 		final IHyperlink hyperlink = hyperlinks[0];
