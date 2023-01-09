@@ -24,7 +24,6 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Assert;
-import org.eclipse.jdt.internal.corext.util.Strings;
 import org.eclipse.jdt.ui.text.java.hover.IJavaEditorTextHover;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
@@ -42,7 +41,6 @@ import qwickie.util.DocumentHelper;
  * @author count.negative
  *
  */
-@SuppressWarnings("restriction")
 public class QWickieHover implements IJavaEditorTextHover {
 	private IEditorPart editor;
 
@@ -100,7 +98,7 @@ public class QWickieHover implements IJavaEditorTextHover {
 						}
 						if (line.contains(wid_const + ":id=\"" + wicketId + "\"")) {
 							text = "<b>Line in " + file.getName() + "</b><br>";
-							text += Strings.trimLeadingTabsAndSpaces(line).replaceAll("<", "&lt;").replaceAll("\"" + wicketId + "\"",
+							text += line.trim().replaceAll("<", "&lt;").replaceAll("\"" + wicketId + "\"",
 									"<b>\"" + wicketId + "\"</b>");
 							break;
 						}

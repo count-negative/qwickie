@@ -159,22 +159,22 @@ public class DocumentHelperTest {
 	public void testFindWicketComponentRegion() {
 		long start = System.nanoTime();
 
-		final int TARGET_OFFSET = 1327;
+		final int TARGET_OFFSET = 1330;
 		final int SOURCE_OFFSET = 1341;
 		final IRegion region = DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET);
 		try {
 			assertEquals(panelDocument.get(region.getOffset(), region.getLength()), "C");
 		} catch (BadLocationException e) {
 		}
-		assertEquals(region, new Region(TARGET_OFFSET, 1));
-		assertEquals(DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 1), new Region(TARGET_OFFSET, 1));
-		assertEquals(DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 2), new Region(TARGET_OFFSET, 1));
-		assertEquals(DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 3), new Region(TARGET_OFFSET, 1));
-		assertEquals(DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 4), new Region(TARGET_OFFSET, 1));
-		assertEquals(DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 5), new Region(TARGET_OFFSET, 1));
-		assertEquals(DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 6), new Region(TARGET_OFFSET, 1));
-		assertEquals(DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 7), new Region(TARGET_OFFSET, 1));
-		assertEquals(DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 8), new Region(TARGET_OFFSET, 1));
+		assertEquals(new Region(TARGET_OFFSET, 1), region);
+		assertEquals(new Region(TARGET_OFFSET, 1), DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 1));
+		assertEquals(new Region(TARGET_OFFSET, 1), DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 2));
+		assertEquals(new Region(TARGET_OFFSET, 1), DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 3));
+		assertEquals(new Region(TARGET_OFFSET, 1), DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 4));
+		assertEquals(new Region(TARGET_OFFSET, 1), DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 5));
+		assertEquals(new Region(TARGET_OFFSET, 1), DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 6));
+		assertEquals(new Region(TARGET_OFFSET, 1), DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 7));
+		assertEquals(new Region(TARGET_OFFSET, 1), DocumentHelper.findWicketComponentRegion(panelDocument, SOURCE_OFFSET + 8));
 
 		final IRegion customerRegion = DocumentHelper.findWicketComponentRegion(customerDocument, 973);
 		try {

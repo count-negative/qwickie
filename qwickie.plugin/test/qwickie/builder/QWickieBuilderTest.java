@@ -49,7 +49,7 @@ public class QWickieBuilderTest {
 		BuildManager buildManager = new BuildManager((Workspace) ResourcesPlugin.getWorkspace(), workspaceLock);
 		IBuildConfiguration buildConfiguration = new IBuildConfiguration() {
 
-			public Object getAdapter(final Class adapter) {
+			public <T> T getAdapter(Class<T> adapter) {
 				return null;
 			}
 
@@ -86,10 +86,10 @@ public class QWickieBuilderTest {
 			assertEquals("testDiv", htmlMarker.getAttribute("wicketId"));
 			assertEquals(Boolean.TRUE, htmlMarker.getAttribute("org.eclipse.core.resources.problemmarker"));
 			assertEquals(1, htmlMarker.getAttribute("priority"));
-			assertEquals(255, htmlMarker.getAttribute("charStart"));
+			assertEquals(268, htmlMarker.getAttribute("charStart"));
 			assertEquals(7, htmlMarker.getAttribute("lineNumber"));
 			assertEquals(2, htmlMarker.getAttribute("severity"));
-			assertEquals(262, htmlMarker.getAttribute("charEnd"));
+			assertEquals(275, htmlMarker.getAttribute("charEnd"));
 			assertEquals("div", htmlMarker.getAttribute("htmlSnippet"));
 		} catch (CoreException e) {
 		}

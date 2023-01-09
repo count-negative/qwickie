@@ -21,6 +21,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.html.ui,
  org.junit
 Bundle-ActivationPolicy: lazy
-Import-Package: org.eclipse.jdt.internal.core.manipulation.util,
- org.eclipse.ui.texteditor
+Import-Package: org.eclipse.ui.texteditor
 Bundle-RequiredExecutionEnvironment: JavaSE-17

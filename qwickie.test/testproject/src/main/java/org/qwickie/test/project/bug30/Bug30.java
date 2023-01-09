@@ -28,10 +28,10 @@ public class Bug30 extends WebPage {
 
 		final ISortableDataProvider<String, String> dp = null;
 		final List<IColumn<String, String>> cols = null;
-		final DefaultDataTable<String, String> dt = new DefaultDataTable<String, String>("table", cols, dp, 10);
+		final DefaultDataTable<String, String> dt = new DefaultDataTable<>("table", cols, dp, 10);
 		add(dt);
 
-		final FilterForm<String> form = new FilterForm<String>("filter-form", (IFilterStateLocator<String>) dp) {
+		var form = new FilterForm<String>("filter-form", (IFilterStateLocator<String>) dp) {
 			private static final long serialVersionUID = 1L;
 
 			@Override

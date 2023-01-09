@@ -15,6 +15,8 @@ public class Issue22 extends WebPage {
 	public Issue22(final PageParameters parameters) {
 
 		add(new ListView<String>("lv", Arrays.asList("abc", "def")) {
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			protected void populateItem(final ListItem<String> item) {
 				item.add(new Label("", item.getModelObject()));

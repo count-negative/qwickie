@@ -38,14 +38,14 @@ public class SuckerfishMenuPanel extends Panel
          * children
          */
         private static final AttributeAppender menuHasSubmenuAppender = new AttributeAppender(
-                        "class", new Model("menu-has-submenu"), " ");
+                        "class", Model.of("menu-has-submenu"), " ");
         private final List<MenuItem> topMenuItems = new ArrayList<MenuItem>();
 
         public SuckerfishMenuPanel(final String id)
         {
                 super(id);
                 // Add the top menus
-                add(new SubMenuListView("topmenuitems", new PropertyModel(this,
+                add(new SubMenuListView("topmenuitems", PropertyModel.of(this,
                                 "topMenuItems")));
         }
 
@@ -176,11 +176,11 @@ public class SuckerfishMenuPanel extends Panel
                 }
         }
 
-        private final class SubMenuListView extends ListView
+        private final class SubMenuListView extends ListView<MenuItem>
         {
                 private static final long serialVersionUID = 0L;
 
-                private SubMenuListView(final String id, final IModel model)
+                private SubMenuListView(final String id, final IModel<List<MenuItem>> model)
                 {
                         super(id, model);
                 }
@@ -191,9 +191,9 @@ public class SuckerfishMenuPanel extends Panel
                 }
 
                 @Override
-                protected void populateItem(final ListItem item)
+                protected void populateItem(final ListItem<MenuItem> item)
                 {
-                        final MenuItem menuItem = (MenuItem) item.getModelObject();
+                        final MenuItem menuItem = item.getModelObject();
                         item.add(new MenuItemFragment(menuItem));
                 }
         }

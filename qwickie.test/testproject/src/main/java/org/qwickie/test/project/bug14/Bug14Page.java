@@ -15,13 +15,15 @@ public class Bug14Page extends WebPage {
 	private static final long serialVersionUID = 1L;
 
 	public Bug14Page(final PageParameters parameters) {
-		final List list = new ArrayList();
-		final PageableListView plv = new PageableListView("plv", list, 10) {
+		record Foo (String bar) {}
+		
+		final List<Foo> list = new ArrayList<Foo>();
+		final PageableListView<Foo> plv = new PageableListView<>("plv", list, 10) {
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			protected void populateItem(final ListItem item) {
+			protected void populateItem(final ListItem<Foo> item) {
 				// TODO Auto-generated method stub
 				add(new Label("test"));
 
