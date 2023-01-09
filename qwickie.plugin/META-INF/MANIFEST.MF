@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Automatic-Module-Name: qwickie.plugin
 Bundle-Name: qwickie
 Bundle-SymbolicName: qwickie.plugin;singleton:=true
-Bundle-Version: 1.1.11.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: qwickie.QWickieActivator
 Bundle-Vendor: count.negative
 Require-Bundle: org.eclipse.ui,

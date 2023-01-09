@@ -19,7 +19,7 @@ public class Bug30 extends WebPage {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.apache.wicket.Component#onInitialize()
 	 */
 	@Override

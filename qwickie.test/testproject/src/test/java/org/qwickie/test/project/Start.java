@@ -15,8 +15,19 @@ import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.webapp.WebAppContext;
 
-public class Start {
-    public static void main(String[] args) throws Exception {
+/**
+ * Separate startup class for people that want to run the examples directly. Use parameter
+ * -Dcom.sun.management.jmxremote to startup JMX (and e.g. connect with jconsole).
+ */
+public class Start
+{
+	/**
+	 * Main function, starts the jetty server.
+	 *
+	 * @param args
+	 */
+	public static void main(String[] args)
+	{
 		System.setProperty("wicket.configuration", "development");
 
 		Server server = new Server();
@@ -93,5 +104,5 @@ public class Start {
 			e.printStackTrace();
 			System.exit(100);
 		}
-    }
+	}
 }
