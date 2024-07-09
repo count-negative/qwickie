@@ -2,7 +2,7 @@
 <feature
       id="qwickie"
       label="qwickie"
-      version="1.2.0.qualifier"
+      version="1.2.1"
       provider-name="count.negative">
 
    <description url="https://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
