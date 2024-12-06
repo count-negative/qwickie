@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.runtime.Assert;
@@ -101,7 +102,7 @@ public class FileSearcher implements IResourceVisitor {
 		final List<IPath> srcFolders = new ArrayList<IPath>();
 		IJavaProject javaProject;
 		try {
-			javaProject = (IJavaProject) project.getNature(JavaCore.NATURE_ID);
+			javaProject = JavaCore.create(project);
 			final IPackageFragmentRoot[] packageFragmentRoots = javaProject.getPackageFragmentRoots();
 			for (final IPackageFragmentRoot pfr : packageFragmentRoots) {
 				if (pfr.getKind() == IPackageFragmentRoot.K_SOURCE) {
@@ -157,8 +158,8 @@ public class FileSearcher implements IResourceVisitor {
 
 		IJavaProject javaProject = null;
 		try {
-			javaProject = (IJavaProject) project.getNature(JavaCore.NATURE_ID);
-		} catch (final CoreException e) {
+			javaProject = JavaCore.create(project);
+		} catch (final Exception e) {
 			// When it's not a java project, return false
 			return false;
 		}

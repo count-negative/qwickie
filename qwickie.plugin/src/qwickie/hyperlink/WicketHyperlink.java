@@ -272,7 +272,7 @@ public class WicketHyperlink implements IHyperlink {
 		} else { // if not, search for one with the same name
 			final FileSearcher fs = new FileSearcher(project, new Path(filename).lastSegment());
 			try {
-				final IJavaProject javaProject = (IJavaProject) project.getNature(JavaCore.NATURE_ID);
+				final IJavaProject javaProject = JavaCore.create(project);
 				final IPackageFragmentRoot[] packageFragmentRoots = javaProject.getPackageFragmentRoots();
 				project.accept(fs);
 				for (final IFile foundFile : fs.getFoundFiles()) {
