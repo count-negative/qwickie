@@ -3,7 +3,7 @@
    <description name="qwickie" url="https://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
       qwickie is a plugin for the webframework Wicket at apache.org
    </description>
-   <feature url="features/qwickie_1.2.0.202301071156.jar" id="qwickie" version="1.2.0.202301071156">
+   <feature url="features/qwickie_1.3.0.jar" id="qwickie" version="1.3.0">
       <category name="qwickie"/>
    </feature>
    <category-def name="qwickie" label="qwickie">

@@ -2,7 +2,7 @@
 <feature
       id="qwickie"
       label="qwickie"
-      version="1.2.1"
+      version="1.3.0"
       provider-name="count.negative">
 
    <description url="https://raw.githubusercontent.com/count-negative/qwickie/master/qwickie.updatesite/site.xml">
@@ -15,9 +15,6 @@
 
    <plugin
          id="qwickie.plugin"
-         download-size="87"
-         install-size="87"
-         version="0.0.0"
-         unpack="false"/>
+         version="0.0.0"/>
 
 </feature>
