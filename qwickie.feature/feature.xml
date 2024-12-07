@@ -14,7 +14,7 @@
    </url>
 
    <plugin
-         id="qwickie.plugin"
+         id="qwickie"
          version="0.0.0"/>
 
 </feature>
