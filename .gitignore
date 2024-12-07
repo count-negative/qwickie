@@ -1,0 +1,51 @@
+### Maven
+####################
+/target/
+/*/target/
+
+### Eclipse
+####################
+/.classpath
+/.externalToolBuilders/
+/.project
+/.settings/
+
+/*/.classpath
+/*/.externalToolBuilders/
+/*/.project
+/*/.settings/
+
+### IntelliJ
+####################
+#*.iml
+#*.ipr
+#*.iws
+#.idea/
+
+### NetBeans
+####################
+#nbproject/private/
+#build/
+#nbbuild/
+#dist/
+#nbdist/
+#nbactions.xml
+#nb-configuration.xml
+
+### Linux
+####################
+*~
+
+### Windows
+####################
+# Thumbnails
+#Thumbs.db
+# Folder options
+#Desktop.ini
+
+### MacOSX
+####################
+# Resource information
+#.DS_Store
+# Thumbnails
+#._*

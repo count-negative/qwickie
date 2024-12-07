@@ -20,7 +20,7 @@
 			class="qwickie.hyperlink.QWickieHtmlHyperlinkDetector"
 			id="qwickie.QWickieHtmlHyperlinkDetector"
 			name="QWickie Html Hyperlinker"
-			targetId="org.eclipse.core.runtime.xml">
+			targetId="org.eclipse.ui.DefaultTextEditor">
 		</hyperlinkDetector>
 	</extension>
 	<extension point="org.eclipse.ltk.core.refactoring.renameParticipants">
